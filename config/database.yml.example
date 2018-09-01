@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  reconnect: false
+  timeout: 5000
+  pool: 5
+
+test:
+  <<: *default
+  host: localhost
+  database: cooperativa_test
+
+development:
+  <<: *default
+  host: localhost
+  database: cooperativa_dev
+
+production:
+  <<: *default
+  database: <%= ENV['CLEARDB_DATABASE_URL'] %>
+  username: app
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>

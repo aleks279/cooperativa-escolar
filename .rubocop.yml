@@ -1,0 +1,98 @@
+#.rubocop.yml
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 2.4
+  Exclude:
+  - ".bundle/**/*" # Auto-generated
+  - "bin/**/*"     # Auto-generated
+  - "vendor/**/*"  # We cannot solve the world's problems
+  - "db/schema.rb"
+  - "db/migrate/*.rb"
+  - "db/samples/**/*" # Don't talk to me about samples, rubocop
+  - "config/initializers/assets.rb"
+
+Rails:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Lint/HandleExceptions:
+  Exclude:
+  - "config/unicorn/*"
+  - "lib/tasks/live_test.rake"
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+  - "config/initializers/devise.rb"
+  - "config/initializers/spree.rb"
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/ClassAndModuleChildren:
+  Exclude:
+  - "app/controllers/**/*" # We generally use compact style here
+
+Style/EmptyLinesAroundBlockBody:
+  Exclude:
+  # These are naturally DSL-y, and so let's be lenient.
+  - "spec/**/*"
+  - "lib/tasks/**/*.rake"
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Style/SignalException:
+  EnforcedStyle: only_raise
+
+Style/SpaceBeforeFirstArg:
+  Exclude:
+  # We often add extra spaces for alignment in factories.
+  - "spec/factories/*"
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrivialAccessors:
+  ExactNameMatch: true
+
+Style/IndentArray:
+  EnforcedStyle: consistent
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+  - "db/migrate/*"
+
+Bundler/OrderedGems:
+  Enabled: false
+
+# Overrides can go here, but try to conform to standards when possible.
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+  - "**/*_decorator.rb"
+  - "spec/**/*_spec.rb"
+  - "spec/factories/*.rb"
+  - "config/routes.rb" # we have a lot of routes. tough shit.

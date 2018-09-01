@@ -1,0 +1,427 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %link{:href => "../assets/img/apple-icon.png", :rel => "apple-touch-icon", :sizes => "76x76"}/
+    %link{:href => "../assets/img/favicon.png", :rel => "icon", :type => "image/png"}/
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %title
+      Material Dashboard by Creative Tim
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no", :name => "viewport"}/
+    / Fonts and icons
+    %link{:href => "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css", :rel => "stylesheet"}/
+    / CSS Files
+    %link{:href => "../assets/css/material-dashboard.css?v=2.1.0", :rel => "stylesheet"}/
+    / CSS Just for demo purpose, don't include it in your project
+    %link{:href => "../assets/demo/demo.css", :rel => "stylesheet"}/
+  %body
+    .wrapper
+      .sidebar{"data-background-color" => "white", "data-color" => "purple", "data-image" => "../assets/img/sidebar-1.jpg"}
+        /
+          Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+          
+          Tip 2: you can also add an image using data-image tag
+        .logo
+          %a.simple-text.logo-normal{:href => "http://www.creative-tim.com"}
+            Creative Tim
+        .sidebar-wrapper
+          %ul.nav
+            %li.nav-item.active
+              %a.nav-link{:href => "./dashboard.html"}
+                %i.material-icons dashboard
+                %p Dashboard
+            %li.nav-item
+              %a.nav-link{:href => "./user.html"}
+                %i.material-icons person
+                %p User Profile
+            %li.nav-item
+              %a.nav-link{:href => "./tables.html"}
+                %i.material-icons content_paste
+                %p Table List
+            %li.nav-item
+              %a.nav-link{:href => "./typography.html"}
+                %i.material-icons library_books
+                %p Typography
+            %li.nav-item
+              %a.nav-link{:href => "./icons.html"}
+                %i.material-icons bubble_chart
+                %p Icons
+            %li.nav-item
+              %a.nav-link{:href => "./map.html"}
+                %i.material-icons location_ons
+                %p Maps
+            %li.nav-item
+              %a.nav-link{:href => "./notifications.html"}
+                %i.material-icons notifications
+                %p Notifications
+            /
+              <li class="nav-item active-pro ">
+              <a class="nav-link" href="./upgrade.html">
+              <i class="material-icons">unarchive</i>
+              <p>Upgrade to PRO</p>
+              </a>
+              </li>
+      .main-panel
+        / Navbar
+        %nav.navbar.navbar-expand-lg.navbar-transparent.navbar-absolute.fixed-top
+          .container-fluid
+            .navbar-wrapper
+              %a.navbar-brand{:href => "#pablo"} Dashboard
+            %button.navbar-toggler{"aria-controls" => "navigation-index", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-toggle" => "collapse", :type => "button"}
+              %span.sr-only Toggle navigation
+              %span.navbar-toggler-icon.icon-bar
+              %span.navbar-toggler-icon.icon-bar
+              %span.navbar-toggler-icon.icon-bar
+            .collapse.navbar-collapse.justify-content-end
+              %form.navbar-form
+                .input-group.no-border
+                  %input.form-control{:placeholder => "Search...", :type => "text", :value => ""}/
+                  %button.btn.btn-white.btn-round.btn-just-icon{:type => "submit"}
+                    %i.material-icons search
+                    .ripple-container
+              %ul.navbar-nav
+                %li.nav-item
+                  %a.nav-link{:href => "#pablo"}
+                    %i.material-icons dashboard
+                    %p.d-lg-none.d-md-block
+                      Stats
+                %li.nav-item.dropdown
+                  %a#navbarDropdownMenuLink.nav-link{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "http://example.com"}
+                    %i.material-icons notifications
+                    %span.notification 5
+                    %p.d-lg-none.d-md-block
+                      Some Actions
+                  .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "navbarDropdownMenuLink"}
+                    %a.dropdown-item{:href => "#"} Mike John responded to your email
+                    %a.dropdown-item{:href => "#"} You have 5 new tasks
+                    %a.dropdown-item{:href => "#"} You're now friend with Andrew
+                    %a.dropdown-item{:href => "#"} Another Notification
+                    %a.dropdown-item{:href => "#"} Another One
+                %li.nav-item
+                  %a.nav-link{:href => "#pablo"}
+                    %i.material-icons person
+                    %p.d-lg-none.d-md-block
+                      Account
+        / End Navbar
+        .content
+          .container-fluid
+            .row
+              .col-lg-3.col-md-6.col-sm-6
+                .card.card-stats
+                  .card-header.card-header-warning.card-header-icon
+                    .card-icon
+                      %i.material-icons content_copy
+                    %p.card-category Used Space
+                    %h3.card-title
+                      49/50
+                      %small GB
+                  .card-footer
+                    .stats
+                      %i.material-icons.text-danger warning
+                      %a{:href => "#pablo"} Get More Space...
+              .col-lg-3.col-md-6.col-sm-6
+                .card.card-stats
+                  .card-header.card-header-success.card-header-icon
+                    .card-icon
+                      %i.material-icons store
+                    %p.card-category Revenue
+                    %h3.card-title $34,245
+                  .card-footer
+                    .stats
+                      %i.material-icons date_range
+                      Last 24 Hours
+              .col-lg-3.col-md-6.col-sm-6
+                .card.card-stats
+                  .card-header.card-header-danger.card-header-icon
+                    .card-icon
+                      %i.material-icons info_outline
+                    %p.card-category Fixed Issues
+                    %h3.card-title 75
+                  .card-footer
+                    .stats
+                      %i.material-icons local_offer
+                      Tracked from Github
+              .col-lg-3.col-md-6.col-sm-6
+                .card.card-stats
+                  .card-header.card-header-info.card-header-icon
+                    .card-icon
+                      %i.fa.fa-twitter
+                    %p.card-category Followers
+                    %h3.card-title +245
+                  .card-footer
+                    .stats
+                      %i.material-icons update
+                      Just Updated
+            .row
+              .col-md-4
+                .card.card-chart
+                  .card-header.card-header-success
+                    #dailySalesChart.ct-chart
+                  .card-body
+                    %h4.card-title Daily Sales
+                    %p.card-category
+                      %span.text-success
+                        %i.fa.fa-long-arrow-up
+                        55%
+                      increase in today sales.
+                  .card-footer
+                    .stats
+                      %i.material-icons access_time
+                      updated 4 minutes ago
+              .col-md-4
+                .card.card-chart
+                  .card-header.card-header-warning
+                    #websiteViewsChart.ct-chart
+                  .card-body
+                    %h4.card-title Email Subscriptions
+                    %p.card-category Last Campaign Performance
+                  .card-footer
+                    .stats
+                      %i.material-icons access_time
+                      campaign sent 2 days ago
+              .col-md-4
+                .card.card-chart
+                  .card-header.card-header-danger
+                    #completedTasksChart.ct-chart
+                  .card-body
+                    %h4.card-title Completed Tasks
+                    %p.card-category Last Campaign Performance
+                  .card-footer
+                    .stats
+                      %i.material-icons access_time
+                      campaign sent 2 days ago
+            .row
+              .col-lg-6.col-md-12
+                .card
+                  .card-header.card-header-tabs.card-header-primary
+                    .nav-tabs-navigation
+                      .nav-tabs-wrapper
+                        %span.nav-tabs-title Tasks:
+                        %ul.nav.nav-tabs{"data-tabs" => "tabs"}
+                          %li.nav-item
+                            %a.nav-link.active{"data-toggle" => "tab", :href => "#profile"}
+                              %i.material-icons bug_report
+                              Bugs
+                              .ripple-container
+                          %li.nav-item
+                            %a.nav-link{"data-toggle" => "tab", :href => "#messages"}
+                              %i.material-icons code
+                              Website
+                              .ripple-container
+                          %li.nav-item
+                            %a.nav-link{"data-toggle" => "tab", :href => "#settings"}
+                              %i.material-icons cloud
+                              Server
+                              .ripple-container
+                  .card-body
+                    .tab-content
+                      #profile.tab-pane.active
+                        %table.table
+                          %tbody
+                            %tr
+                              %td
+                                .form-check
+                                  %label.form-check-label
+                                    %input.form-check-input{:checked => "checked", :type => "checkbox", :value => ""}/
+                                    %span.form-check-sign
+                                      %span.check
+                              %td Sign contract for "What are conference organizers afraid of?"
+                              %td.td-actions.text-right
+                                %button.btn.btn-primary.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                                  %i.material-icons edit
+                                %button.btn.btn-danger.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                                  %i.material-icons close
+                            %tr
+                              %td
+                                .form-check
+                                  %label.form-check-label
+                                    %input.form-check-input{:type => "checkbox", :value => ""}/
+                                    %span.form-check-sign
+                                      %span.check
+                              %td Lines From Great Russian Literature? Or E-mails From My Boss?
+                              %td.td-actions.text-right
+                                %button.btn.btn-primary.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                                  %i.material-icons edit
+                                %button.btn.btn-danger.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                                  %i.material-icons close
+                            %tr
+                              %td
+                                .form-check
+                                  %label.form-check-label
+                                    %input.form-check-input{:type => "checkbox", :value => ""}/
+                                    %span.form-check-sign
+                                      %span.check
+                              %td
+                                Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                              %td.td-actions.text-right
+                                %button.btn.btn-primary.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                                  %i.material-icons edit
+                                %button.btn.btn-danger.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                                  %i.material-icons close
+                            %tr
+                              %td
+                                .form-check
+                                  %label.form-check-label
+                                    %input.form-check-input{:checked => "checked", :type => "checkbox", :value => ""}/
+                                    %span.form-check-sign
+                                      %span.check
+                              %td Create 4 Invisible User Experiences you Never Knew About
+                              %td.td-actions.text-right
+                                %button.btn.btn-primary.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                                  %i.material-icons edit
+                                %button.btn.btn-danger.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                                  %i.material-icons close
+                      #messages.tab-pane
+                        %table.table
+                          %tbody
+                            %tr
+                              %td
+                                .form-check
+                                  %label.form-check-label
+                                    %input.form-check-input{:checked => "checked", :type => "checkbox", :value => ""}/
+                                    %span.form-check-sign
+                                      %span.check
+                              %td
+                                Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                              %td.td-actions.text-right
+                                %button.btn.btn-primary.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                                  %i.material-icons edit
+                                %button.btn.btn-danger.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                                  %i.material-icons close
+                            %tr
+                              %td
+                                .form-check
+                                  %label.form-check-label
+                                    %input.form-check-input{:type => "checkbox", :value => ""}/
+                                    %span.form-check-sign
+                                      %span.check
+                              %td Sign contract for "What are conference organizers afraid of?"
+                              %td.td-actions.text-right
+                                %button.btn.btn-primary.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                                  %i.material-icons edit
+                                %button.btn.btn-danger.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                                  %i.material-icons close
+                      #settings.tab-pane
+                        %table.table
+                          %tbody
+                            %tr
+                              %td
+                                .form-check
+                                  %label.form-check-label
+                                    %input.form-check-input{:type => "checkbox", :value => ""}/
+                                    %span.form-check-sign
+                                      %span.check
+                              %td Lines From Great Russian Literature? Or E-mails From My Boss?
+                              %td.td-actions.text-right
+                                %button.btn.btn-primary.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                                  %i.material-icons edit
+                                %button.btn.btn-danger.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                                  %i.material-icons close
+                            %tr
+                              %td
+                                .form-check
+                                  %label.form-check-label
+                                    %input.form-check-input{:checked => "checked", :type => "checkbox", :value => ""}/
+                                    %span.form-check-sign
+                                      %span.check
+                              %td
+                                Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                              %td.td-actions.text-right
+                                %button.btn.btn-primary.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                                  %i.material-icons edit
+                                %button.btn.btn-danger.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                                  %i.material-icons close
+                            %tr
+                              %td
+                                .form-check
+                                  %label.form-check-label
+                                    %input.form-check-input{:checked => "checked", :type => "checkbox", :value => ""}/
+                                    %span.form-check-sign
+                                      %span.check
+                              %td Sign contract for "What are conference organizers afraid of?"
+                              %td.td-actions.text-right
+                                %button.btn.btn-primary.btn-link.btn-sm{:rel => "tooltip", :title => "Edit Task", :type => "button"}
+                                  %i.material-icons edit
+                                %button.btn.btn-danger.btn-link.btn-sm{:rel => "tooltip", :title => "Remove", :type => "button"}
+                                  %i.material-icons close
+              .col-lg-6.col-md-12
+                .card
+                  .card-header.card-header-warning
+                    %h4.card-title Employees Stats
+                    %p.card-category New employees on 15th September, 2016
+                  .card-body.table-responsive
+                    %table.table.table-hover
+                      %thead.text-warning
+                        %th ID
+                        %th Name
+                        %th Salary
+                        %th Country
+                      %tbody
+                        %tr
+                          %td 1
+                          %td Dakota Rice
+                          %td $36,738
+                          %td Niger
+                        %tr
+                          %td 2
+                          %td Minerva Hooper
+                          %td $23,789
+                          %td Curaçao
+                        %tr
+                          %td 3
+                          %td Sage Rodriguez
+                          %td $56,142
+                          %td Netherlands
+                        %tr
+                          %td 4
+                          %td Philip Chaney
+                          %td $38,735
+                          %td Korea, South
+        %footer.footer
+          .container-fluid
+            %nav.float-left
+              %ul
+                %li
+                  %a{:href => "https://www.creative-tim.com"}
+                    Creative Tim
+                %li
+                  %a{:href => "https://creative-tim.com/presentation"}
+                    About Us
+                %li
+                  %a{:href => "http://blog.creative-tim.com"}
+                    Blog
+                %li
+                  %a{:href => "https://www.creative-tim.com/license"}
+                    Licenses
+            .copyright.float-right
+              ©
+              :javascript
+                document.write(new Date().getFullYear())
+              , made with
+              %i.material-icons favorite
+              by
+              %a{:href => "https://www.creative-tim.com", :target => "_blank"} Creative Tim
+              for a better web.
+    / Core JS Files
+    %script{:src => "../assets/js/core/jquery.min.js", :type => "text/javascript"}
+    %script{:src => "../assets/js/core/popper.min.js", :type => "text/javascript"}
+    %script{:src => "../assets/js/core/bootstrap-material-design.min.js", :type => "text/javascript"}
+    %script{:src => "../assets/js/plugins/perfect-scrollbar.jquery.min.js"}
+    / Google Maps Plugin
+    %script{:src => "https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"}
+    / Chartist JS
+    %script{:src => "../assets/js/plugins/chartist.min.js"}
+    / Notifications Plugin
+    %script{:src => "../assets/js/plugins/bootstrap-notify.js"}
+    / Control Center for Material Dashboard: parallax effects, scripts for the example pages etc
+    %script{:src => "../assets/js/material-dashboard.min.js?v=2.1.0", :type => "text/javascript"}
+    / Material Dashboard DEMO methods, don't include it in your project!
+    %script{:src => "../assets/demo/demo.js"}
+    :javascript
+      $(document).ready(function() {
+        // Javascript method's body can be found in assets/js/demos.js
+        md.initDashboardPageCharts();
+
+      });
