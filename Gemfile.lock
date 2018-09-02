@@ -638,7 +638,7 @@ DEPENDENCIES
   rolify
   rspec-its
   rspec-rails
-  rubocop (~> 0.46.0)
+  rubocop
   sass-rails (~> 5.0)
   scss_lint
   sdoc (~> 0.4.0)

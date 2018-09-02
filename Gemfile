@@ -28,7 +28,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'annotate', '>=2.6.0'
 gem 'jquery_mask_rails'
 gem 'bootsnap', require: false
-gem 'jquery-rails'
 gem 'popper_js', '~> 1.12.9'
 gem 'bootstrap-sass'
 gem 'font-awesome-rails'
@@ -80,7 +79,7 @@ group :development do
   gem 'erb2haml'
   gem 'rails-erd', require: false
 
-  gem 'rubocop', '~> 0.46.0', require: false
+  gem 'rubocop', require: false
   gem 'foreman'
   gem 'scss_lint', require: false
 
