@@ -79,7 +79,7 @@ group :development do
   gem 'erb2haml'
   gem 'rails-erd', require: false
 
-  gem 'rubocop', require: false
+  gem 'rubocop', '~> 0.49.0', require: false
   gem 'foreman'
   gem 'scss_lint', require: false
 
