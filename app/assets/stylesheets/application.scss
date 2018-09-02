@@ -10,11 +10,15 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap/css/bootstrap.min
+ *= require fontawesome-free/css/all.min
+ *= require datatables/dataTables.bootstrap4
+ += require css/sb-admin
  *= require_tree .
  *= require_self
  */
 
-@import 'bootstrap';
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
-@import 'bootstrap_sb_admin_base_v1';
+ @import 'bootstrap';
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+ @import 'bootstrap_sb_admin_base_v1';

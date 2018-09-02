@@ -1,0 +1,12 @@
+= render 'admin/layouts/header'
+#wrapper
+  = render 'admin/layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          %a{:href => "#"} Dashboard
+        %li.breadcrumb-item.active Tables
+
+= render 'admin/layouts/footer'

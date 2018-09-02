@@ -12,6 +12,12 @@
 //
 //= require popper
 //= require jquery3
+//= require jquery/jquery.min
+//= require bootstrap/js/bootstrap.bundle.min
+//= require jquery-easing/jquery.easing.min
+//= require datatables/jquery.dataTables
+//= require datatables/dataTables.bootstrap4
+//= require js/sb-admin.min
 //= require bootstrap
 //= require bootstrap_sb_admin_base_v1
 //= require rails-ujs

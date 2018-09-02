@@ -10,7 +10,4 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body.bg-dark
     .container
-      - unless request.path == signin_path
-        = render 'layouts/header'
       = yield
-      = render 'layouts/footer'
