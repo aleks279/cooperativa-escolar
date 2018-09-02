@@ -67,6 +67,7 @@ group :development, :test do
 
   gem 'shoulda-matchers'
   gem 'database_cleaner'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
 end
 
 group :development do
@@ -83,9 +84,9 @@ group :development do
   gem 'foreman'
   gem 'scss_lint', require: false
 
-  gem "better_errors"
-  gem "binding_of_caller"
-  gem "bullet"
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'bullet'
 end
 
 group :test do

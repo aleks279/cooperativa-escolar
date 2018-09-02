@@ -9,4 +9,8 @@ describe OrderItem do
     it { is_expected.to belong_to(:order) }
     it { is_expected.to belong_to(:product) }
   end
+
+  describe 'callbacks' do
+    it { is_expected.to callback(:calculate_total).after(:create) }
+  end
 end

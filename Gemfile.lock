@@ -535,6 +535,8 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     sexp_processor (4.11.0)
+    shoulda-callback-matchers (1.1.4)
+      activesupport (>= 3)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
     simplecov (0.16.1)
@@ -644,6 +646,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   scss_lint
   sdoc (~> 0.4.0)
+  shoulda-callback-matchers (~> 1.1.1)
   shoulda-matchers
   simplecov
   spring
