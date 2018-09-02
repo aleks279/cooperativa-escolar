@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     get 'users/index'
   end
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
   }
 
   devise_scope :user do
@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
   end
-  
+
   resources :orders
   resources :products
 

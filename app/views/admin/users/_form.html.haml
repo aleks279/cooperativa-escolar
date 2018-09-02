@@ -1,0 +1,47 @@
+.card.mb-3
+  .card-header
+    %i.fas.fa-table
+    Editar Usuario
+  .card-body
+    - if @user.errors.any?
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+    = form_for [:admin, @user] do |user_form|
+      .form-group
+        .form-row
+          .col-md-6
+            .form-label-group
+              = user_form.text_field :first_name, autofocus: true, placeholder: 'Nombre', class: 'form-control', required: true
+              = user_form.label :first_name, 'Nombre'
+          .col-md-6
+            .form-label-group
+              = user_form.text_field :last_name, placeholder: 'Apellido(s)', class: 'form-control', required: true
+              = user_form.label :last_name, 'Apellido'
+      .form-group
+        .form-label-group
+          = user_form.email_field :email, autocomplete: 'email', placeholder: 'Correo', class: 'form-control', required: true
+          = user_form.label :email, 'Correo'
+      .form-group
+        .form-row
+          .col-md-6
+            .form-label-group
+              = user_form.select :role, @roles.map { |t| [t.to_s.humanize.capitalize, t] }, { include_blank: 'Seleccione un rol' }, class: 'form-control', required: true
+          .col-md-6
+            .form-label-group
+              = user_form.text_field :id_number, autofocus: true, placeholder: 'Cédula', class: 'form-control', required: true
+              = user_form.label :id_number, 'Cédula'
+              = user_form.password_field :password, value: 'password', hidden: true
+              = user_form.password_field :password_confirmation, value: 'password', hidden: true
+      .form-group
+        .form-row.justify-content-between
+          .col-md-3
+            = user_form.submit 'Guardar', class: 'btn btn-primary btn-block'
+          - if @title == :edit
+            .col-md-3
+              = link_to 'Cancelar', admin_user_path(@user), class: 'btn btn-secondary btn-block'
+          - if @title == :new
+            .col-md-3
+              = link_to 'Cancelar', admin_users_path, class: 'btn btn-secondary btn-block'
+:javascript
+  $('#user_id_number').mask('0-0000-0000');

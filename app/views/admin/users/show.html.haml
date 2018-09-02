@@ -8,5 +8,33 @@
         %li.breadcrumb-item
           = link_to 'Usuarios', admin_users_path
         %li.breadcrumb-item.active #{@user.first_name} #{@user.last_name}
+      .card.mb-3
+        .card-header
+          .row.justify-content-between
+            .col-3.align-self-center
+              %i.fas.fa-user-circle
+              Perfil
+            .col-3
+              = link_to 'Editar', edit_admin_user_path(@user), class: 'btn btn-primary btn-block float-right'
+        .card-body
+          .row
+            .col-md-6
+              Nombre:
+              %br
+              #{@user.first_name}
+            .col-md-6
+              Apellido:
+              %br
+              #{@user.last_name}
+          .row
+          .row
+            .col-md-6
+              Rol:
+              %br
+              #{@user.role.humanize.capitalize}
+            .col-md-6
+              Cédula de identidad:
+              %br
+              #{@user.id_number}
 
 = render 'admin/layouts/footer'

@@ -1,6 +1,7 @@
 .card.card-login.mx-auto.mt-5
   .card-header Cooperativa Escolar
   .card-body
+    = devise_error_messages!
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group
         .form-label-group

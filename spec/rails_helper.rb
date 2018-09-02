@@ -29,6 +29,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
   config.infer_spec_type_from_file_location!
   config.include FactoryBot::Syntax::Methods
+  config.include RequestSpecHelper, type: :request
   [:request].each do |type|
     config.include Rails::Controller::Testing::TestProcess, type: type
     config.include Rails::Controller::Testing::TemplateAssertions, type: type
