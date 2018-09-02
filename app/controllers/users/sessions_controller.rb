@@ -19,9 +19,9 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def after_sign_in_path_for(resource)
-    if resource.is_admin? || resource.is_vendedor?
+    if resource.admin? || resource.vendedor?
       admin_users_path
-    elsif resource.is_personal_escolar?
+    elsif resource.personal_escolar?
       sign_out resource
     else
       super

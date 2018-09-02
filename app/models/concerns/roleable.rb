@@ -16,19 +16,19 @@ module Roleable
     end
   end
 
-  def is_admin?
+  def admin?
     role.to_sym == :admin
   end
 
-  def is_cliente?
+  def cliente?
     role.to_sym == :cliente
   end
 
-  def is_vendedor?
+  def vendedor?
     role.to_sym == :vendedor
   end
 
-  def is_personal_escolars?
+  def personal_escolars?
     role.to_sym == :personal_escolar
   end
 end
