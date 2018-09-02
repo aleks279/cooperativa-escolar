@@ -58,6 +58,7 @@ describe 'User requests', type: :request do
 
       it 're-renders the new user template' do
         post admin_users_path, params: invalid_attributes
+        expect(response).to render_template :new
       end
     end
   end
@@ -74,4 +75,59 @@ describe 'User requests', type: :request do
     end
   end
 
+  describe 'PUT /admin/users/:user_id' do
+    let(:existing_user) { create(:user) }
+
+    describe 'with valid attributes' do
+      let(:params) {
+        {
+          user: {
+            first_name: 'New name',
+            last_name: 'New last name',
+          }
+        }
+      }
+
+      it 'updates the user' do
+        put admin_user_path(existing_user), params: params
+        expect(existing_user.reload).to have_attributes(params[:user])
+      end
+
+      it 'redirects to the user profile page' do
+        put admin_user_path(existing_user), params: params
+        expect(response).to redirect_to admin_user_path(existing_user)
+      end
+    end
+
+    describe 'with invalid attributes' do
+      let(:params) {
+        {
+          user: {
+            first_name: '',
+            last_name: '',
+          }
+        }
+      }
+
+      it 're-renders the edit user template' do
+        put admin_user_path(existing_user), params: params
+        expect(response).to render_template :edit
+      end
+    end
+  end
+
+  describe 'DELETE /admin/users/:user_id' do
+    let!(:deletable_user) { create(:user) }
+
+    it 'succeeds' do
+      expect {
+        delete admin_user_path(deletable_user)
+      }.to change(User, :count).by(-1)
+    end
+
+    it 'redirects to the user index page' do
+      delete admin_user_path(deletable_user)
+      expect(response).to redirect_to admin_users_path
+    end
+  end
 end
