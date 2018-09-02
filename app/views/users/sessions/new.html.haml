@@ -1,0 +1,20 @@
+.card.card-login.mx-auto.mt-5
+  .card-header Cooperativa Escolar
+  .card-body
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .form-group
+        .form-label-group
+          = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Ingrese el correo', class: 'form-control', required: true
+          = f.label :email, 'Correo'
+      .form-group
+        .form-label-group
+        = f.password_field :password, autocomplete: "current-password", class: 'form-control', required: true
+        = f.label :password, 'Contraseña'
+      .form-group
+        .checkbox
+          %label
+            = f.check_box :remember_me
+            Recordar contraseña
+      = f.submit 'Ingresar', class: 'btn btn-primary btn-block'
+    .text-center
+      = render 'users/shared/links'    

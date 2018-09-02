@@ -7,7 +7,7 @@
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
     %meta{:content => "", :name => "description"}/
     %meta{:content => "", :name => "author"}/
-    %title SB Admin - Dashboard
+    %title SB Admin - Tables
     / Bootstrap core CSS
     %link{:href => "vendor/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
     / Custom fonts for this template
@@ -59,7 +59,7 @@
     #wrapper
       / Sidebar
       %ul.sidebar.navbar-nav
-        %li.nav-item.active
+        %li.nav-item
           %a.nav-link{:href => "index.html"}
             %i.fas.fa-fw.fa-tachometer-alt
             %span Dashboard
@@ -80,7 +80,7 @@
           %a.nav-link{:href => "charts.html"}
             %i.fas.fa-fw.fa-chart-area
             %span Charts
-        %li.nav-item
+        %li.nav-item.active
           %a.nav-link{:href => "tables.html"}
             %i.fas.fa-fw.fa-table
             %span Tables
@@ -90,57 +90,7 @@
           %ol.breadcrumb
             %li.breadcrumb-item
               %a{:href => "#"} Dashboard
-            %li.breadcrumb-item.active Overview
-          / Icon Cards
-          .row
-            .col-xl-3.col-sm-6.mb-3
-              .card.text-white.bg-primary.o-hidden.h-100
-                .card-body
-                  .card-body-icon
-                    %i.fas.fa-fw.fa-comments
-                  .mr-5 26 New Messages!
-                %a.card-footer.text-white.clearfix.small.z-1{:href => "#"}
-                  %span.float-left View Details
-                  %span.float-right
-                    %i.fas.fa-angle-right
-            .col-xl-3.col-sm-6.mb-3
-              .card.text-white.bg-warning.o-hidden.h-100
-                .card-body
-                  .card-body-icon
-                    %i.fas.fa-fw.fa-list
-                  .mr-5 11 New Tasks!
-                %a.card-footer.text-white.clearfix.small.z-1{:href => "#"}
-                  %span.float-left View Details
-                  %span.float-right
-                    %i.fas.fa-angle-right
-            .col-xl-3.col-sm-6.mb-3
-              .card.text-white.bg-success.o-hidden.h-100
-                .card-body
-                  .card-body-icon
-                    %i.fas.fa-fw.fa-shopping-cart
-                  .mr-5 123 New Orders!
-                %a.card-footer.text-white.clearfix.small.z-1{:href => "#"}
-                  %span.float-left View Details
-                  %span.float-right
-                    %i.fas.fa-angle-right
-            .col-xl-3.col-sm-6.mb-3
-              .card.text-white.bg-danger.o-hidden.h-100
-                .card-body
-                  .card-body-icon
-                    %i.fas.fa-fw.fa-life-ring
-                  .mr-5 13 New Tickets!
-                %a.card-footer.text-white.clearfix.small.z-1{:href => "#"}
-                  %span.float-left View Details
-                  %span.float-right
-                    %i.fas.fa-angle-right
-          / Area Chart Example
-          .card.mb-3
-            .card-header
-              %i.fas.fa-chart-area
-              Area Chart Example
-            .card-body
-              %canvas#myAreaChart{:height => "30", :width => "100%"}
-            .card-footer.small.text-muted Updated yesterday at 11:59 PM
+            %li.breadcrumb-item.active Tables
           / DataTables Example
           .card.mb-3
             .card-header
@@ -566,6 +516,8 @@
                       %td 2011/01/25
                       %td $112,000
             .card-footer.small.text-muted Updated yesterday at 11:59 PM
+          %p.small.text-center.text-muted.my-5
+            %em More table examples coming soon...
         / /.container-fluid
         / Sticky Footer
         %footer.sticky-footer
@@ -595,11 +547,9 @@
     / Core plugin JavaScript
     %script{:src => "vendor/jquery-easing/jquery.easing.min.js"}
     / Page level plugin JavaScript
-    %script{:src => "vendor/chart.js/Chart.min.js"}
     %script{:src => "vendor/datatables/jquery.dataTables.js"}
     %script{:src => "vendor/datatables/dataTables.bootstrap4.js"}
     / Custom scripts for all pages
     %script{:src => "js/sb-admin.min.js"}
     / Demo scripts for this page
     %script{:src => "js/demo/datatables-demo.js"}
-    %script{:src => "js/demo/chart-area-demo.js"}

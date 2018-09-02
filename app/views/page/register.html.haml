@@ -1,0 +1,55 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %title SB Admin - Register
+    / Bootstrap core CSS
+    %link{:href => "vendor/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
+    / Custom fonts for this template
+    %link{:href => "vendor/fontawesome-free/css/all.min.css", :rel => "stylesheet", :type => "text/css"}/
+    / Custom styles for this template
+    %link{:href => "css/sb-admin.css", :rel => "stylesheet"}/
+  %body.bg-dark
+    .container
+      .card.card-register.mx-auto.mt-5
+        .card-header Register an Account
+        .card-body
+          %form
+            .form-group
+              .form-row
+                .col-md-6
+                  .form-label-group
+                    %input#firstName.form-control{:autofocus => "autofocus", :placeholder => "First name", :required => "required", :type => "text"}/
+                    %label{:for => "firstName"} First name
+                .col-md-6
+                  .form-label-group
+                    %input#lastName.form-control{:placeholder => "Last name", :required => "required", :type => "text"}/
+                    %label{:for => "lastName"} Last name
+            .form-group
+              .form-label-group
+                %input#inputEmail.form-control{:placeholder => "Email address", :required => "required", :type => "email"}/
+                %label{:for => "inputEmail"} Email address
+            .form-group
+              .form-row
+                .col-md-6
+                  .form-label-group
+                    %input#inputPassword.form-control{:placeholder => "Password", :required => "required", :type => "password"}/
+                    %label{:for => "inputPassword"} Password
+                .col-md-6
+                  .form-label-group
+                    %input#confirmPassword.form-control{:placeholder => "Confirm password", :required => "required", :type => "password"}/
+                    %label{:for => "confirmPassword"} Confirm password
+            %a.btn.btn-primary.btn-block{:href => "login.html"} Register
+          .text-center
+            %a.d-block.small.mt-3{:href => "login.html"} Login Page
+            %a.d-block.small{:href => "forgot-password.html"} Forgot Password?
+    / Bootstrap core JavaScript
+    %script{:src => "vendor/jquery/jquery.min.js"}
+    %script{:src => "vendor/bootstrap/js/bootstrap.bundle.min.js"}
+    / Core plugin JavaScript
+    %script{:src => "vendor/jquery-easing/jquery.easing.min.js"}

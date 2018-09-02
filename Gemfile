@@ -19,6 +19,7 @@ gem 'paperclip'
 gem 'fog'
 gem 'material_icons'
 gem 'kaminari'
+gem 'bootstrap_sb_admin_base_v1'
 
 # Misc
 gem 'turbolinks'
