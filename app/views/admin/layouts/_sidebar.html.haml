@@ -1,9 +1,17 @@
 / Sidebar
 %ul.sidebar.navbar-nav
-  %li.nav-item.active
-    %a.nav-link{:href => "index.html"}
+  %li.nav-item{class: "#{active_link?("users")}"}
+    = link_to admin_users_path, class: 'nav-link' do
       %i.fas.fa-fw.fa-tachometer-alt
-      %span Dashboard
+      %span Ordenes
+  %li.nav-item{class: "#{active_link?("users")}"}
+    = link_to admin_users_path, class: 'nav-link' do
+      %i.fas.fa-fw.fa-tachometer-alt
+      %span Productos
+  %li.nav-item{class: "#{active_link?("users")}"}
+    = link_to admin_users_path, class: 'nav-link' do
+      %i.fas.fa-fw.fa-tachometer-alt
+      %span Usuarios
   %li.nav-item.dropdown
     %a#pagesDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
       %i.fas.fa-fw.fa-folder

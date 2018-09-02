@@ -4,8 +4,8 @@
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .form-group
         .form-label-group
-          = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Ingrese el correo', class: 'form-control', required: true
-          = f.label :email, 'Correo'
+        = f.email_field :email, autofocus: true, autocomplete: 'email', placeholder: 'Ingrese el correo', class: 'form-control', required: true
+        = f.label :email, 'Correo'
       .form-group
         .form-label-group
         = f.password_field :password, autocomplete: "current-password", class: 'form-control', required: true

@@ -7,6 +7,6 @@
       %ol.breadcrumb
         %li.breadcrumb-item
           = link_to 'Usuarios', admin_users_path
-        %li.breadcrumb-item.active Todos
+        %li.breadcrumb-item.active #{@user.first_name} #{@user.last_name}
 
 = render 'admin/layouts/footer'
