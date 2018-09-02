@@ -15,7 +15,8 @@
               %i.fas.fa-table
               Lista de Usuarios
             .col-3
-              = link_to 'Agregar usuario', new_admin_user_path, class: 'btn btn-primary btn-block float-right'
+              - if can? :create, current_user
+                = link_to 'Agregar usuario', new_admin_user_path, class: 'btn btn-primary btn-block float-right'
         .card-body
           .table-responsive
             %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
@@ -40,7 +41,8 @@
                     %td.align-middle
                       = link_to 'Ver perfil', admin_user_path(user), class: 'btn btn-primary btn-block'
                     %td.align-middle
-                      = link_to 'Editar', edit_admin_user_path(user), class: 'btn btn-primary btn-block'
+                      - if can? :update, user
+                        = link_to 'Editar', edit_admin_user_path(user), class: 'btn btn-primary btn-block'
                     %td.align-middle
                       - if can_delete? user
                         = link_to 'Eliminar', admin_user_path(user), method: :delete, data: { confirm: 'Seguro que desea eliminar este usuario permanentemente?' }, class: 'btn btn-danger btn-block'
