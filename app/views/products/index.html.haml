@@ -1,0 +1,42 @@
+= render 'admin/layouts/header'
+#wrapper
+  = render 'admin/layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Productos', products_path
+        %li.breadcrumb-item.active Todos
+      .card.mb-3
+        .card-header
+          .row.justify-content-between
+            .col-3.align-self-center
+              %i.fas.fa-table
+              Lista de Productos
+            .col-3
+              - if can? :create, current_user
+                = link_to 'Agregar Producto', new_product_path, class: 'btn btn-primary btn-block float-right'
+        .card-body
+          .table-responsive
+            %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
+              %thead
+                %tr
+                  %th Nombre
+                  %th Precio
+                  %th Cantidad
+                  %th Descripcion
+                  %th Disponible
+              %tbody
+                - @products.each do |product|
+                  %tr
+                    %td.align-middle=product.name
+                    %td.align-middle=product.price
+                    %td.align-middle=product.in_stock
+                    %td.align-middle=product.description
+                    %td.align-middle
+                      -if product.available 
+                        ='Si'
+                      -else 
+                        = 'No' 
+= render 'admin/layouts/footer'
