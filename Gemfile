@@ -92,4 +92,5 @@ end
 group :test do
   gem 'simplecov', require: false
   gem 'capybara'
+  gem "rspec_junit_formatter"
 end
