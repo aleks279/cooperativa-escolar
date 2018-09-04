@@ -1,0 +1,7 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: cooperativa_test
+  username: postgres
+  pool: 5
+  host: localhost
