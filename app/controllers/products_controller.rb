@@ -1,5 +1,4 @@
-class ProductsController < ApplicationController
-  layout 'admin/layouts/admin'
+class ProductsController < Admin::BaseController
   def index
     @products = Product.all
   end
