@@ -1,0 +1,41 @@
+
+/ Breadcrumbs
+.card.mb-3
+  .card-header
+    %i.fas.fa-table
+    Lista de productos a la venta
+  .card-body
+    - if @order.errors.any?
+      %ul
+        - @order.errors.full_messages.each do |msg|
+          %li= msg
+    = form_for @order do |order_form|
+      .form-group
+        .form-row.justify-content-between
+          .col-md-3
+            = order_form.submit 'Guardar', class: 'btn btn-primary btn-block'
+          - if @title == :new
+            .col-md-3
+              = link_to 'Cancelar', orders_path, class: 'btn btn-secondary btn-block'
+      .form-group
+        .table-responsive
+          %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
+            %thead
+              %tr
+                %th Nombre
+                %th Precio
+                %th Cantidad disponible
+                %th Cantidad a vender
+                %th
+                %th
+
+            %tbody
+              - @products.each do |product|
+                %tr
+                  %td.align-middle=product.name
+                  %td.align-middle=product.price
+                  %td.align-middle=product.in_stock
+                  %td.align-middle
+
+
+= render 'admin/layouts/footer'
