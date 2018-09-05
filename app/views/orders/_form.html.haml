@@ -18,24 +18,8 @@
             .col-md-3
               = link_to 'Cancelar', orders_path, class: 'btn btn-secondary btn-block'
       .form-group
-        .table-responsive
-          %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
-            %thead
-              %tr
-                %th Nombre
-                %th Precio
-                %th Cantidad disponible
-                %th Cantidad a vender
-                %th
-                %th
-
-            %tbody
-              - @products.each do |product|
-                %tr
-                  %td.align-middle=product.name
-                  %td.align-middle=product.price
-                  %td.align-middle=product.in_stock
-                  %td.align-middle
-
+        = order_form.fields_for :order_items do |order_item_form|
+          = render 'order_item_fields', f: order_item_form
+        = link_to_add_association 'Add order item', order_form, :order_items, class: 'btn btn--secondary'
 
 = render 'admin/layouts/footer'

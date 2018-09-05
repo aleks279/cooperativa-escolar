@@ -11,19 +11,19 @@ class OrdersController < Admin::BaseController
 
   def new
     @order = Order.new
-    @products = Product.all
+    @products = Product.where(available: true)
     @title = :new
   end
 
   def create
     @title = :new
-    @order = Order.new(orders_params)
-    @order_items = OrderItem.new(orders_params)
+    @order = Order.new(order_params)
+    @products = Product.where(available: true)
+
+    @order.seller = current_user
 
     if @order.save
-      if @order_items.save
         redirect_to orders_path
-      end
     else
       render 'new'
     end
@@ -55,13 +55,13 @@ class OrdersController < Admin::BaseController
 
   def order_params
     params.require(:order).permit(
-      :number, :date, :total, :notes, :seller, :customer
-    )
-  end
-
-  def order_item_params
-    params.require(:order_item).permit(
-      :amount, :item_total, :order, :product
+      :number, :date, :notes, :seller, :customer,
+      order_items_attributes: [
+        :amount, :order, :product_id,
+      ],
+      customer_attributes: [
+        :first_name, :last_name, :email,
+      ]
     )
   end
 end
