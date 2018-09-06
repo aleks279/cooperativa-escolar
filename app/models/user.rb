@@ -5,8 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   include Roleable
 
-  validates :first_name, :last_name,
-            :id_number, :role, presence: true
+  validates :first_name, :last_name, :role, presence: true
   validates :id_number, uniqueness: true
 
 end
