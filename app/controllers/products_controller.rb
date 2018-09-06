@@ -1,4 +1,5 @@
 class ProductsController < Admin::BaseController
+<<<<<<< HEAD
   
   before_action :find_product, only: %i[change edit update destroy]
 
@@ -17,6 +18,13 @@ class ProductsController < Admin::BaseController
 
   def show;
   end
+=======
+  def index
+    @products = Product.all
+  end
+
+  def show; end
+>>>>>>> 5b35f5a81aef367a1d2fd4caad0e3ec600b1c368
 
   def new
     @product = Product.new
@@ -40,7 +48,11 @@ class ProductsController < Admin::BaseController
   def update
     @title = :edit
     if @product.update(product_params)
+<<<<<<< HEAD
       redirect_to products_path(@product)
+=======
+      redirect_to products_path(@user)
+>>>>>>> 5b35f5a81aef367a1d2fd4caad0e3ec600b1c368
     else
       render 'edit'
     end
@@ -57,10 +69,17 @@ class ProductsController < Admin::BaseController
     @product = Product.find(params[:id])
   end
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5b35f5a81aef367a1d2fd4caad0e3ec600b1c368
   def product_params
     params.require(:product).permit(
       :name, :description, :price, :in_stock, :available
     )
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> 5b35f5a81aef367a1d2fd4caad0e3ec600b1c368
