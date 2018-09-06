@@ -23,11 +23,8 @@ class OrdersController < Admin::BaseController
     @order.seller = current_user
 
     if @order.save
-<<<<<<< HEAD
         redirect_to orders_path
-=======
       redirect_to orders_path
->>>>>>> origin/addOrders2
     else
       render 'new'
     end

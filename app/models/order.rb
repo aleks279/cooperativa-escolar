@@ -22,11 +22,8 @@ class Order < ApplicationRecord
 
   def valid_amount
     order_items.each do |item|
-<<<<<<< HEAD
       errors.add(:amount, "Las cantidades ingresadas deben ser menores o iguales a las disponibles") if item.amount > item.product.in_stock
-=======
       errors.add(:amount, "must be greater than available quantity") if item.amount > item.product.in_stock
->>>>>>> origin/addOrders2
     end
   end
 
@@ -37,8 +34,4 @@ class Order < ApplicationRecord
     end
     update_attributes(total: total)
   end
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/addOrders2
 end

@@ -39,21 +39,18 @@
                     %td.align-middle=order.seller.try(:first_name)
                     %td.align-middle
                       = link_to 'Ver perfil', orders_path, class: 'btn btn-primary btn-block'
-<<<<<<< HEAD
                     -#%td.align-middle
                     -#  - if can? :update, order
                     -#    = link_to 'Editar', edit_orders_path, class: 'btn btn-primary btn-block'
                     -#%td.align-middle
                     -#  - if can_delete?
                     -#    = link_to 'Eliminar', orders_path(user), method: :delete, data: { confirm: 'Seguro que desea eliminar esta factura permanentemente?' }, class: 'btn btn-danger btn-block'
-=======
                     -# %td.align-middle
                     -#   - if can? :update, order
                     -#     = link_to 'Editar', edit_orders_path, class: 'btn btn-primary btn-block'
                     -# %td.align-middle
                     -#   - if can_delete? 
                     -#     = link_to 'Eliminar', orders_path(user), method: :delete, data: { confirm: 'Seguro que desea eliminar esta factura permanentemente?' }, class: 'btn btn-danger btn-block'
->>>>>>> origin/addOrders2
 
 
 = render 'admin/layouts/footer'

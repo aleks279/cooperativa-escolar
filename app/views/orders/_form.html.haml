@@ -21,9 +21,5 @@
         = order_form.fields_for :order_items do |order_item_form|
           = render 'order_item_fields', f: order_item_form
         = link_to_add_association 'Add order item', order_form, :order_items, class: 'btn btn--secondary'
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/addOrders2
 
 = render 'admin/layouts/footer'

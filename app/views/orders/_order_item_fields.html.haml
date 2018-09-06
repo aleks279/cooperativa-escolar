@@ -1,13 +1,6 @@
 .nested-fields
   = f.label 'Producto'
-<<<<<<< HEAD
   = f.collection_select :product_id, @products, :id, :name, {include_blank: 'Seleccione un producto'}, {class: 'form-control'}
   = f.label 'Cantidad'
   = f.number_field :amount, class: 'form-control'
-=======
   = f.collection_select :product_id, @products, :id, :name, { include_blank: 'Seleccione un producto' }, { class: 'form-control' }
-
-  = f.label 'Cantidad'
-  = f.number_field :amount, class: 'form-control'
-  
->>>>>>> origin/addOrders2
