@@ -27,6 +27,8 @@
                   %th Cantidad
                   %th Descripcion
                   %th Disponible
+                  %th
+                  %th
               %tbody
                 - @products.each do |product|
                   %tr
@@ -35,8 +37,12 @@
                     %td.align-middle=product.in_stock
                     %td.align-middle=product.description
                     %td.align-middle
-                      -if product.available 
-                        ='Si'
+                      -if product.available
+                        = link_to 'Si', change_products_path(product),class: 'btn btn-primary btn-block'
                       -else 
-                        = 'No' 
+                        = link_to 'No', change_products_path(product), class: 'btn btn-danger btn-block'
+                    %td.align-middle
+                      = link_to 'Editar', edit_product_path(product), class: 'btn btn-primary btn-block'
+                    %td.align-middle
+                      = link_to 'Eliminar', product_path(product), method: :delete, data: { confirm: 'Seguro que desea eliminar este producto ?' }, class: 'btn btn-danger btn-block'
 = render 'admin/layouts/footer'

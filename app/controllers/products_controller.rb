@@ -1,9 +1,22 @@
 class ProductsController < Admin::BaseController
+  
+  before_action :find_product, only: %i[change edit update destroy]
+
   def index
-    @products = Product.all
+    @products = Product.order(name: :asc)
   end
 
-  def show; end
+  def change
+    if @product.available == true
+      Product.update(@product.id,:available => false)
+    else
+      Product.update(@product.id,:available => true)
+   end
+   redirect_to products_path(@product)
+  end
+
+  def show;
+  end
 
   def new
     @product = Product.new
@@ -27,7 +40,7 @@ class ProductsController < Admin::BaseController
   def update
     @title = :edit
     if @product.update(product_params)
-      redirect_to products_path(@user)
+      redirect_to products_path(@product)
     else
       render 'edit'
     end
@@ -43,6 +56,7 @@ class ProductsController < Admin::BaseController
   def find_product
     @product = Product.find(params[:id])
   end
+
 
   def product_params
     params.require(:product).permit(

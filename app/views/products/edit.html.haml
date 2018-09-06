@@ -1,0 +1,15 @@
+= render 'admin/layouts/header'
+#wrapper
+  = render 'admin/layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Productos', products_path
+        %li.breadcrumb-item
+          = link_to "#{@product.name}", products_path(@product)
+        %li.breadcrumb-item.active Editar
+      = render 'form'
+
+= render 'admin/layouts/footer'

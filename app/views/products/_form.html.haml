@@ -38,7 +38,11 @@
         .form-row.justify-content-between
           .col-md-3
             = product_form.submit 'Guardar', class: 'btn btn-primary btn-block'
+          - if @title == :edit
+            .col-md-3 
+              = link_to 'Cancelar', products_path(@product), class: 'btn btn-secondary btn-block'
           - if @title == :new
             .col-md-3 
               = link_to 'Cancelar', products_path, class: 'btn btn-secondary btn-block'
+          
 
