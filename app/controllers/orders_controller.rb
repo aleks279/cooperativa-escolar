@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
   end
 
   def show;
-    @order_items = OrderItem.all
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: @order.id)
   end
 
   def new
@@ -43,7 +44,10 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order.destroy
+    @order = Order.find(params[:id])
+    if @order.present?
+      @order.destroy
+    end
     redirect_to orders_path
   end
 
