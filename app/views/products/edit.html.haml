@@ -1,0 +1,13 @@
+= render 'layouts/header'
+#wrapper
+  = render 'layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Productos', products_path
+        %li.breadcrumb-item.active Editar Producto
+      = render 'form'
+
+= render 'layouts/footer'
