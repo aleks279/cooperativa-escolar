@@ -1,4 +1,5 @@
-class ProductsController < Admin::BaseController
+class ProductsController < ApplicationController
+  before_action :find_product, except: %i[new create index]
   def index
     @products = Product.all
   end
@@ -27,7 +28,7 @@ class ProductsController < Admin::BaseController
   def update
     @title = :edit
     if @product.update(product_params)
-      redirect_to products_path(@user)
+      redirect_to products_path
     else
       render 'edit'
     end
