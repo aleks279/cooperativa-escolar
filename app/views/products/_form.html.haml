@@ -18,27 +18,26 @@
         .form-row
           .col-md-6
             .form-label-group
-              = product_form.text_field :price, placeholder: 'Precio', class: 'form-control', required: true
-              = product_form.label :price, 'Precio'
+              = product_form.text_field :price, placeholder: 'Precio unitario', class: 'form-control', required: true
+              = product_form.label :price, 'Precio unitario'
       .form-group
         .form-row
           .col-md-6
             .form-label-group
-              = product_form.text_field :in_stock, placeholder: 'Cantidad', class: 'form-control', required: true
-              = product_form.label :in_stock, 'Cantidad'
+              = product_form.text_field :in_stock, placeholder: 'Cantidad disponible', class: 'form-control', required: true
+              = product_form.label :in_stock, 'Cantidad disponible'
       .form-group      
         .form-label-group
-          = product_form.text_area :description, placeholder: 'Descripccion', class: 'form-control', required: true, rows: "6"
+          = product_form.text_area :description, placeholder: 'Descripción', class: 'form-control', required: true, rows: "6"
       
       .form-group.row
         .form-check
           = product_form.check_box :available
-          = product_form.label :avilable, 'Disponible'
+          = product_form.label :avilable, 'Disponible para la venta'
       .form-group
         .form-row.justify-content-between
           .col-md-3
             = product_form.submit 'Guardar', class: 'btn btn-primary btn-block'
-          - if @title == :new
-            .col-md-3 
-              = link_to 'Cancelar', products_path, class: 'btn btn-secondary btn-block'
+          .col-md-3 
+            = link_to 'Cancelar', products_path, class: 'btn btn-secondary btn-block'
 

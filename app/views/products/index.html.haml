@@ -1,6 +1,6 @@
-= render 'admin/layouts/header'
+= render 'layouts/header'
 #wrapper
-  = render 'admin/layouts/sidebar'
+  = render 'layouts/sidebar'
   #content-wrapper
     .container-fluid
       / Breadcrumbs
@@ -27,6 +27,8 @@
                   %th Cantidad
                   %th Descripcion
                   %th Disponible
+                  %th
+                  %th
               %tbody
                 - @products.each do |product|
                   %tr
@@ -35,8 +37,14 @@
                     %td.align-middle=product.in_stock
                     %td.align-middle=product.description
                     %td.align-middle
-                      -if product.available 
+                      - if product.available 
                         ='Si'
-                      -else 
-                        = 'No' 
-= render 'admin/layouts/footer'
+                      - else 
+                        = 'No'
+                    %td.align-middle
+                      - if can? :update, product
+                        = link_to 'Editar', edit_product_path(product), class: 'btn btn-primary btn-block'
+                    %td.align-middle
+                      - if can_delete? product
+                        = link_to 'Eliminar', product_path(product), method: :delete, data: { confirm: 'Seguro que desea eliminar este producto permanentemente?' }, class: 'btn btn-danger btn-block'
+= render 'layouts/footer'
