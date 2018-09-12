@@ -69,7 +69,7 @@ describe 'User requests', type: :request do
       expect(response).to be_successful
     end
 
-    it 'initializes the new user' do
+    it 'initializes the user' do
       get edit_admin_user_path(user)
       expect(assigns[:user]).to eq(user)
     end
