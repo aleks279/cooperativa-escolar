@@ -15,7 +15,7 @@
               %i.fas.fa-order-circle
               Orden
             .col-3
-              = link_to 'Editar', orders_path, class: 'btn btn-primary btn-block float-right'
+              = link_to 'Editar', edit_order_path(@order), class: 'btn btn-primary btn-block float-right'
         .card-body
           .row
             .col-md-6
@@ -39,6 +39,12 @@
           .row
           .row
             .col-md-6
+              Notas de la ventas:
+              %br
+              #{@order.notes}
+          .row
+          .row
+            .col-md-6
               %br/
               Lista de productos de la orden:
           .row
@@ -47,7 +53,7 @@
               %thead
                 %tr
                   %th Producto
-                  %th Precio
+                  %th Precio unitario
                   %th Cantidad
                   %th SubTotal
               %tbody

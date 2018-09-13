@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  layout 'admin/layouts/admin'
 
   def index
     @orders = Order.all
@@ -31,13 +32,17 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: @order.id)
+    @products = Product.where(available: true)
     @title = :edit
   end
 
   def update
+    @order = Order.find(params[:id])
     @title = :edit
     if @order.update(order_params)
-      redirect_to orders_path(@order)
+      redirect_to order_path
     else
       render 'edit'
     end

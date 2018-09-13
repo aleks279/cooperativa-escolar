@@ -11,6 +11,9 @@
           %li= msg
     = form_for @order do |order_form|
       .form-group
+        .form-label-group
+          = order_form.text_area :notes, placeholder: 'Notas de la venta (opcional)', class: 'form-control', required: false, rows: "4"
+      .form-group
         .form-row.justify-content-between
           .col-md-3
             = order_form.submit 'Guardar', class: 'btn btn-primary btn-block'

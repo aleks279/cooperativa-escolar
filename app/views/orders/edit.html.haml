@@ -1,0 +1,13 @@
+= render 'admin/layouts/header'
+#wrapper
+  = render 'admin/layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Ordenes', orders_path
+        %li.breadcrumb-item
+      = render 'form'
+
+= render 'admin/layouts/footer'

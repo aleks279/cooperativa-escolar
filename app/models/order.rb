@@ -10,6 +10,8 @@ class Order < ApplicationRecord
 
   after_create :calculate_total
 
+  #after_update :calculate_total
+
   has_many :order_items, dependent: :destroy
 
   belongs_to :seller, foreign_key: :seller_id, class_name: 'User'

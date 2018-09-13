@@ -40,9 +40,10 @@
                     %td.align-middle
                       = link_to 'Ver detalles', order_path(order), class: 'btn btn-primary btn-block'
                     %td.align-middle
-                      = link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro que desea eliminar esta factura permanentemente?' }, class: 'btn btn-danger btn-block'
-                    -#%td.align-middle
-                    -#  - if can? :update, order
-                    -#    = link_to 'Editar', edit_orders_path, class: 'btn btn-primary btn-block'
+                      - if can? :update, order
+                        = link_to 'Editar', edit_order_path(order), class: 'btn btn-primary btn-block'
+                    %td.align-middle
+                      = link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro que desea eliminar esta orden permanentemente?' }, class: 'btn btn-danger btn-block'
+
 
 = render 'admin/layouts/footer'
