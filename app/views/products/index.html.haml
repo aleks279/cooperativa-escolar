@@ -1,0 +1,50 @@
+= render 'layouts/header'
+#wrapper
+  = render 'layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Productos', products_path
+        %li.breadcrumb-item.active Todos
+      .card.mb-3
+        .card-header
+          .row.justify-content-between
+            .col-3.align-self-center
+              %i.fas.fa-table
+              Lista de Productos
+            .col-3
+              - if can? :create, current_user
+                = link_to 'Agregar Producto', new_product_path, class: 'btn btn-primary btn-block float-right'
+        .card-body
+          .table-responsive
+            %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
+              %thead
+                %tr
+                  %th Nombre
+                  %th Precio
+                  %th Cantidad
+                  %th Descripcion
+                  %th Disponible
+                  %th
+                  %th
+              %tbody
+                - @products.each do |product|
+                  %tr
+                    %td.align-middle=product.name
+                    %td.align-middle=product.price
+                    %td.align-middle=product.in_stock
+                    %td.align-middle=product.description
+                    %td.align-middle
+                      - if product.available 
+                        ='Si'
+                      - else 
+                        = 'No'
+                    %td.align-middle
+                      - if can? :update, product
+                        = link_to 'Editar', edit_product_path(product), class: 'btn btn-primary btn-block'
+                    %td.align-middle
+                      - if can_delete? product
+                        = link_to 'Eliminar', product_path(product), method: :delete, data: { confirm: 'Seguro que desea eliminar este producto permanentemente?' }, class: 'btn btn-danger btn-block'
+= render 'layouts/footer'
