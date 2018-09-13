@@ -1,12 +1,10 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe 'Product request', type: :request do 
-	let(:product) {create(:product)}
-
-	describe 'GET /products' do
-    it 'gets all the products' do
-      get products_path
-      expect(response).to be_successful
-    end
-	
+describe 'Product requests', type: :request do
+	describe 'GET /products/new' do
+		it 'render the template for new product' do
+			response = get new_product_path
+			expect(response).to be_successful
+		end
+	end
 end

@@ -1,6 +1,0 @@
-.nested-fields
-  = f.label 'Producto'
-  = f.collection_select :product_id, @products, :id, :name, {include_blank: 'Seleccione un producto'}, {class: 'form-control'}
-  = f.label 'Cantidad'
-  = f.number_field :amount, class: 'form-control'
-  = f.collection_select :product_id, @products, :id, :name, { include_blank: 'Seleccione un producto' }, { class: 'form-control' }
