@@ -14,8 +14,9 @@
             .col-3.align-self-center
               %i.fas.fa-user-circle
               Perfil
-            .col-3
-              = link_to 'Editar', edit_admin_user_path(@user), class: 'btn btn-primary btn-block float-right'
+            - if can? :update, @user
+              .col-3
+                = link_to 'Editar', edit_admin_user_path(@user), class: 'btn btn-primary btn-block float-right'
         .card-body
           .row
             .col-md-6

@@ -1,6 +1,6 @@
-= render 'admin/layouts/header'
+= render 'layouts/header'
 #wrapper
-  = render 'admin/layouts/sidebar'
+  = render 'layouts/sidebar'
   #content-wrapper
     .container-fluid
       / Breadcrumbs
@@ -13,15 +13,12 @@
           .row.justify-content-between
             .col-3.align-self-center
               %i.fas.fa-order-circle
-              Orden
-            .col-3
-              = link_to 'Editar', edit_order_path(@order), class: 'btn btn-primary btn-block float-right'
+              Orden ##{@order.number}
+            - if can? :update, @order
+              .col-3
+                = link_to 'Editar', edit_order_path(@order), class: 'btn btn-primary btn-block float-right'
         .card-body
           .row
-            .col-md-6
-              Numero de orden:
-              %br
-              #{@order.number}
             .col-md-6
               Fecha:
               %br
@@ -31,7 +28,7 @@
             .col-md-6
               Total:
               %br
-              #{@order.total}
+              ₡ #{number_with_precision(@order.total, precision: 0)}
             .col-md-6
               Vendedor:
               %br
@@ -55,13 +52,13 @@
                   %th Producto
                   %th Precio unitario
                   %th Cantidad
-                  %th SubTotal
+                  %th Total por item
               %tbody
-                - @order_items.each do |item|
+                - @order.order_items.each do |item|
                   %tr
                     %td.align-middle=item.product.try(:name)
-                    %td.align-middle=item.product.try(:price)
+                    %td.align-middle="₡ #{number_with_precision(item.product.try(:price), precision: 0)}"
                     %td.align-middle=item.amount
-                    %td.align-middle=item.item_total
+                    %td.align-middle="₡ #{number_with_precision(item.item_total, precision: 0)}"
 
-= render 'admin/layouts/footer'
+= render 'layouts/footer'

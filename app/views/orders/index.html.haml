@@ -1,6 +1,6 @@
-= render 'admin/layouts/header'
+= render 'layouts/header'
 #wrapper
-  = render 'admin/layouts/sidebar'
+  = render 'layouts/sidebar'
   #content-wrapper
     .container-fluid
       / Breadcrumbs
@@ -16,7 +16,7 @@
               Lista de Ordenes
             .col-3
               - if can? :create, current_user
-                = link_to 'Agregar Ordenes', new_order_path(@products), class: 'btn btn-primary btn-block float-right'
+                = link_to 'Crear Ordenes', new_order_path(@products), class: 'btn btn-primary btn-block float-right'
         .card-body
           .table-responsive
             %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
@@ -35,15 +35,17 @@
                   %tr
                     %td.align-middle=order.number
                     %td.align-middle=order.created_at.strftime("%m/%d/%Y")
-                    %td.align-middle=order.total
+                    %td.align-middle="₡ #{number_with_precision(order.total, precision: 0)}"
                     %td.align-middle=order.seller.try(:first_name)
                     %td.align-middle
-                      = link_to 'Ver detalles', order_path(order), class: 'btn btn-primary btn-block'
+                      - if can? :read, order
+                        = link_to 'Ver detalles', order_path(order), class: 'btn btn-primary btn-block'
                     %td.align-middle
                       - if can? :update, order
                         = link_to 'Editar', edit_order_path(order), class: 'btn btn-primary btn-block'
                     %td.align-middle
-                      = link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro que desea eliminar esta orden permanentemente?' }, class: 'btn btn-danger btn-block'
+                      - if can? :delete, order
+                        = link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro que desea eliminar esta orden permanentemente?' }, class: 'btn btn-danger btn-block'
 
 
-= render 'admin/layouts/footer'
+= render 'layouts/footer'

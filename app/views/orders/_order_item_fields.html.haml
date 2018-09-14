@@ -1,6 +1,13 @@
-.nested-fields
-  = f.label 'Producto'
-  = f.collection_select :product_id, @products, :id, :name, { include_blank: 'Seleccione un producto' }, class: 'form-control', required: true
-  = f.label 'Cantidad'
-  = f.number_field :amount, class: 'form-control', required: true
-  = link_to_remove_association 'Quitar producto', f, class: 'btn btn-secondary'
+.card-body.nested-fields
+  .form-group
+    .form-row
+      .col-md-6
+        .form-label-group
+          = f.collection_select :product_id, @products, :id, :name, { include_blank: 'Seleccione un producto' }, class: 'form-control', required: true
+  .form-group
+    .form-row
+      .col-md-6
+        .form-label-group
+          = f.number_field :amount, class: 'form-control', required: true
+          = f.label 'Cantidad'
+  = link_to_remove_association 'Quitar producto', f, class: 'btn btn-danger'
