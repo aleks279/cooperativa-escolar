@@ -1,26 +1,21 @@
 class OrdersController < ApplicationController
-  layout 'admin/layouts/admin'
+  before_action :find_order, except: %i[index new create]
+  before_action :set_products, only: %i[new create edit update]
 
   def index
     @orders = Order.all
-    @order_items = OrderItem.all
   end
 
-  def show;
-    @order = Order.find(params[:id])
-    @order_items = OrderItem.where(order_id: @order.id)
-  end
+  def show; end
 
   def new
     @order = Order.new
-    @products = Product.where(available: true)
     @title = :new
   end
 
   def create
     @title = :new
     @order = Order.new(order_params)
-    @products = Product.where(available: true)
 
     @order.seller = current_user
 
@@ -32,24 +27,19 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.find(params[:id])
-    @order_items = OrderItem.where(order_id: @order.id)
-    @products = Product.where(available: true)
     @title = :edit
   end
 
   def update
-    @order = Order.find(params[:id])
     @title = :edit
     if @order.update(order_params)
-      redirect_to order_path
+      redirect_to order_path(@order)
     else
       render 'edit'
     end
   end
 
   def destroy
-    @order = Order.find(params[:id])
     if @order.present?
       @order.destroy
     end
@@ -62,11 +52,15 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def set_products
+    @products = Product.where(available: true)
+  end
+
   def order_params
     params.require(:order).permit(
       :number, :date, :notes, :seller, :customer,
       order_items_attributes: [
-        :amount, :order, :product_id,
+        :id, :amount, :order, :product_id, :_destroy
       ],
       customer_attributes: [
         :first_name, :last_name, :email,
