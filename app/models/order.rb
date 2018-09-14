@@ -16,8 +16,6 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :customer
 
-  private
-
   def calculate_total
     total = 0
     order_items.each do |item|

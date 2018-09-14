@@ -23,5 +23,5 @@ class OrderItem < ApplicationRecord
   def update_products
     product.update_attributes(in_stock: product.in_stock - amount)
   end
-  
+
 end

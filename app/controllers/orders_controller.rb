@@ -33,6 +33,7 @@ class OrdersController < ApplicationController
   def update
     @title = :edit
     if @order.update(order_params)
+      @order.calculate_total
       redirect_to order_path(@order)
     else
       render 'edit'
