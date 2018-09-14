@@ -6,27 +6,17 @@ class Order < ApplicationRecord
                        uniqueness: { allow_blank: true }
   end
 
-  validate :valid_amount
-
   after_create :calculate_total
-
-  #after_update :calculate_total
 
   has_many :order_items, dependent: :destroy
 
   belongs_to :seller, foreign_key: :seller_id, class_name: 'User'
   belongs_to :customer, foreign_key: :customer_id, class_name: 'User', optional: true
 
-  accepts_nested_attributes_for :order_items
+  accepts_nested_attributes_for :order_items, reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :customer
 
   private
-
-  def valid_amount
-    order_items.each do |item|
-      errors.add(:amount, "Las cantidades ingresadas deben ser menores o iguales a las disponibles") if item.amount > item.product.in_stock
-    end
-  end
 
   def calculate_total
     total = 0

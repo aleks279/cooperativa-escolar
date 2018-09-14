@@ -6,6 +6,7 @@ module Roleable
     cliente
     vendedor
     personal_escolar
+    asociado
   ].freeze
 
   def add_valid_role(role)
@@ -28,7 +29,11 @@ module Roleable
     role.to_sym == :vendedor
   end
 
-  def personal_escolars?
+  def personal_escolar?
     role.to_sym == :personal_escolar
+  end
+
+  def asociado?
+    role.to_sym == :asociado
   end
 end
