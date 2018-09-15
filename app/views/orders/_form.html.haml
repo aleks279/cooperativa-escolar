@@ -1,0 +1,21 @@
+.card.mb-3
+  .card-body
+    - if @order.errors.any?
+      %ul
+        - @order.errors.full_messages.each do |msg|
+          %li= msg
+    = form_for @order do |order_form|
+      = order_form.fields_for :order_items do |order_item_form|
+        = render 'order_item_fields', f: order_item_form
+      .form-group
+        .form-row.justify-content-between
+          = link_to_add_association 'Agregar item', order_form, :order_items, class: 'btn btn-secondary'
+      .form-group
+        .form-label-group
+          = order_form.text_area :notes, placeholder: 'Notas de la venta (opcional)', class: 'form-control', required: false, rows: "3"
+      .form-group
+        .form-row.justify-content-between
+          .col-md-3
+            = order_form.submit 'Guardar', class: 'btn btn-primary btn-block'
+          .col-md-3
+            = link_to 'Cancelar', orders_path, class: 'btn btn-secondary btn-block'

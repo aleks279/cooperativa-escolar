@@ -13,7 +13,7 @@
 //= require popper
 //= require jquery3
 //= require jquery/jquery.min
-//= require jquery.mask 
+//= require jquery.mask
 //= require bootstrap/js/bootstrap.bundle.min
 //= require jquery-easing/jquery.easing.min
 //= require datatables/jquery.dataTables
@@ -24,4 +24,5 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require cocoon
 //= require_tree .

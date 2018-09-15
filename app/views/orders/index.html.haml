@@ -1,0 +1,51 @@
+= render 'layouts/header'
+#wrapper
+  = render 'layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Ordenes', orders_path
+        %li.breadcrumb-item.active Todos
+      .card.mb-3
+        .card-header
+          .row.justify-content-between
+            .col-3.align-self-center
+              %i.fas.fa-table
+              Lista de Ordenes
+            .col-3
+              - if can? :create, current_user
+                = link_to 'Crear Ordenes', new_order_path(@products), class: 'btn btn-primary btn-block float-right'
+        .card-body
+          .table-responsive
+            %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
+              %thead
+                %tr
+                  %th Numero
+                  %th Fecha
+                  %th Total
+                  %th Vendedor
+                  %th
+                  %th
+                  %th
+
+              %tbody
+                - @orders.each do |order|
+                  %tr
+                    %td.align-middle=order.number
+                    %td.align-middle=order.created_at.strftime("%m/%d/%Y")
+                    %td.align-middle="₡ #{number_with_precision(order.total, precision: 0)}"
+                    %td.align-middle=order.seller.try(:first_name)
+                    %td.align-middle
+                      - if can? :read, order
+                        = link_to 'Ver detalles', order_path(order), class: 'btn btn-primary btn-block'
+                    %td.align-middle
+                      - if can? :update, order
+                        = link_to 'Editar', edit_order_path(order), class: 'btn btn-primary btn-block'
+                    %td.align-middle
+                      - if can? :delete, order
+                        = link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro que desea eliminar esta orden permanentemente?' }, class: 'btn btn-danger btn-block'
+
+
+= render 'layouts/footer'

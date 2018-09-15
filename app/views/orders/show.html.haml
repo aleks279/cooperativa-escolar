@@ -1,0 +1,64 @@
+= render 'layouts/header'
+#wrapper
+  = render 'layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Ordenes', orders_path
+        %li.breadcrumb-item.active #{@order.number}
+      .card.mb-3
+        .card-header
+          .row.justify-content-between
+            .col-3.align-self-center
+              %i.fas.fa-order-circle
+              Orden ##{@order.number}
+            - if can? :update, @order
+              .col-3
+                = link_to 'Editar', edit_order_path(@order), class: 'btn btn-primary btn-block float-right'
+        .card-body
+          .row
+            .col-md-6
+              Fecha:
+              %br
+              #{@order.created_at.strftime("%m/%d/%Y")}
+          .row
+          .row
+            .col-md-6
+              Total:
+              %br
+              ₡ #{number_with_precision(@order.total, precision: 0)}
+            .col-md-6
+              Vendedor:
+              %br
+              #{@order.seller.try(:first_name)}
+          .row
+          .row
+            .col-md-6
+              Notas de la ventas:
+              %br
+              #{@order.notes}
+          .row
+          .row
+            .col-md-6
+              %br/
+              Lista de productos de la orden:
+          .row
+          .table-responsive
+            %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
+              %thead
+                %tr
+                  %th Producto
+                  %th Precio unitario
+                  %th Cantidad
+                  %th Total por item
+              %tbody
+                - @order.order_items.each do |item|
+                  %tr
+                    %td.align-middle=item.product.try(:name)
+                    %td.align-middle="₡ #{number_with_precision(item.product.try(:price), precision: 0)}"
+                    %td.align-middle=item.amount
+                    %td.align-middle="₡ #{number_with_precision(item.item_total, precision: 0)}"
+
+= render 'layouts/footer'
