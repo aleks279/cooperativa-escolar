@@ -10,7 +10,7 @@ class Order < ApplicationRecord
 
   has_many :order_items, dependent: :destroy
 
-  belongs_to :seller, foreign_key: :seller_id, class_name: 'User'
+  belongs_to :seller, foreign_key: :seller_id, class_name: 'User', optional: true
   belongs_to :customer, foreign_key: :customer_id, class_name: 'User', optional: true
 
   accepts_nested_attributes_for :order_items, reject_if: :all_blank, allow_destroy: true

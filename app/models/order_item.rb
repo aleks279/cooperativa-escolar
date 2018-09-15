@@ -12,7 +12,7 @@ class OrderItem < ApplicationRecord
   private
 
   def valid_amount
-    errors.add(:amount, "Las cantidades ingresadas deben ser menores o iguales a las disponibles") if amount > product.in_stock
+    errors.add(:amount, "Las cantidades ingresadas deben ser menores o iguales a las disponibles") if amount.to_i > product.try(:in_stock).to_i
   end
 
   def calculate_total
