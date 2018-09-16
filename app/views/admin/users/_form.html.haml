@@ -31,8 +31,16 @@
             .form-label-group
               = user_form.text_field :id_number, autofocus: true, placeholder: 'Cédula', class: 'form-control', required: true
               = user_form.label :id_number, 'Cédula'
-              = user_form.password_field :password, value: 'password', hidden: true
-              = user_form.password_field :password_confirmation, value: 'password', hidden: true
+      .form-group
+        .form-row
+          .col-md-6
+            .form-label-group
+              = user_form.password_field :password, class: 'form-control', required: true
+              = user_form.label :password, 'Contraseña'
+          .col-md-6
+            .form-label-group
+              = user_form.password_field :password_confirmation, class: 'form-control', required: true
+              = user_form.label :password_confirmation, 'Confirmar Contraseña'
       .form-group
         .form-row.justify-content-between
           .col-md-3
