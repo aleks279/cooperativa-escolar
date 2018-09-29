@@ -8,4 +8,9 @@ describe User do
     it { is_expected.to validate_uniqueness_of(:id_number) }
     it { is_expected.to validate_presence_of(:role) }
   end
+
+  describe 'associations' do
+    it { is_expected.to have_many(:articles) }
+    it { is_expected.to have_many(:registries) }
+  end
 end
