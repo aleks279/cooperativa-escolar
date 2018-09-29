@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_02_012141) do
+ActiveRecord::Schema.define(version: 2018_09_29_183012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.boolean "published", default: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
 
   create_table "order_items", force: :cascade do |t|
     t.integer "amount"
@@ -47,6 +56,26 @@ ActiveRecord::Schema.define(version: 2018_09_02_012141) do
     t.boolean "available", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "registries", force: :cascade do |t|
+    t.string "registry_type"
+    t.text "notes"
+    t.time "time"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_registries_on_user_id"
+  end
+
+  create_table "sections", force: :cascade do |t|
+    t.string "header"
+    t.string "image_url"
+    t.text "body"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_sections_on_article_id"
   end
 
   create_table "users", force: :cascade do |t|
