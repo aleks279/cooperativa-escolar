@@ -9,4 +9,7 @@ class User < ApplicationRecord
             :id_number, :role, presence: true
   validates :id_number, uniqueness: true
 
+  has_many :articles
+  has_many :registries
+
 end

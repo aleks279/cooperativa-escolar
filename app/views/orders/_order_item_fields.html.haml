@@ -1,7 +1,7 @@
 .form-row.nested-fields
   .col-md-5
     .form-label-group
-      = f.collection_select :product_id, @products, :id, :name, { include_blank: 'Seleccione un producto' }, class: 'form-control', required: true
+      = f.collection_select :product_id, @products, :id, :name_and_available_aty, { include_blank: 'Seleccione un producto' }, class: 'form-control', required: true
   .col-md-5
     .form-label-group
       = f.number_field :amount, class: 'form-control', required: true

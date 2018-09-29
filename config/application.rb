@@ -23,5 +23,8 @@ module CooperativaEscolar
       g.helper false
       g.stylesheets false
     end
+
+    config.active_record.default_timezone = :local
+    config.time_zone = 'America/Costa_Rica'
   end
 end
