@@ -48,6 +48,7 @@ gem 'friendly_id'
 gem 'wicked'
 gem 'rack-cors', require: 'rack/cors'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'wicked_pdf'
 
 # For searches
 gem 'ransack', git: 'https://github.com/activerecord-hackery/ransack'
