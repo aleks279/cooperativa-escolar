@@ -29,6 +29,7 @@
                   %th
                   %th
                   %th
+                  %th
 
               %tbody
                 - @orders.each do |order|
@@ -46,6 +47,8 @@
                     %td.align-middle
                       - if can? :delete, order
                         = link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro que desea eliminar esta orden permanentemente?' }, class: 'btn btn-danger btn-block'
+                    %td.align-middle
+                      = link_to 'Reporte', order_path(order), class: 'btn btn-primary btn-block'
 
 
 = render 'layouts/footer'
