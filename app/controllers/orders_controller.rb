@@ -46,6 +46,10 @@ class OrdersController < ApplicationController
     end
     redirect_to orders_path
   end
+  
+  def topdf
+    respond_to do |format|
+      format.pdf {render template: 'orders/reports/pdf',pdf:'Reporte'}
 
   private
 
