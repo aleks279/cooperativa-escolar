@@ -4,12 +4,13 @@ class RegistriesController < ApplicationController
 
   def new
     @registry = Registry.new
+    @types = %i[Entrada Salida]
   end
 
   def create
+    @types = %i[Entrada Salida]
     @registry = Registry.new(registry_params)
     @registry.user = @user
-    @registry.time = Time.zone.now
 
     if @registry.save
       redirect_to new_registry_path
@@ -21,7 +22,7 @@ class RegistriesController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by(registry_params[:registry][:id_number])
+    @user = User.find_by(id_number: params[:id_number])
   end
 
   def registry_params

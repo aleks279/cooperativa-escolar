@@ -28,10 +28,10 @@
               %tbody
                 - @registries.each do |registry|
                   %tr
-                    %td.align-middle=registry.time
-                    %td.align-middle=registry.registry_type
-                    %td.align-middle=registry.user.first_name
+                    %td.align-middle=registry.user.full_name
                     %td.align-middle=registry.user.id_number
+                    %td.align-middle=registry.registry_type
+                    %td.align-middle=l registry.created_at, format: :long
                     %td.align-middle=registry.try(:notes)
 
 = render 'admin/layouts/footer'
