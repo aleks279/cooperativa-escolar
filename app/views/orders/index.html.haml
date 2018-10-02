@@ -17,6 +17,8 @@
             .col-3
               - if can? :create, current_user
                 = link_to 'Nueva Orden', new_order_path(@products), class: 'btn btn-primary btn-block float-right'
+            .col-3
+              = link_to 'Reporte Mensual', reports_path, class: 'btn btn-primary btn-block float-right'
         .card-body
           .table-responsive
             %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
@@ -29,7 +31,7 @@
                   %th
                   %th
                   %th
-                  %th
+               
 
               %tbody
                 - @orders.each do |order|
@@ -47,8 +49,6 @@
                     %td.align-middle
                       - if can? :delete, order
                         = link_to 'Eliminar', order_path(order), method: :delete, data: { confirm: 'Seguro que desea eliminar esta orden permanentemente?' }, class: 'btn btn-danger btn-block'
-                    %td.align-middle
-                      = link_to 'Reporte', order_path(order), class: 'btn btn-primary btn-block'
 
 
 = render 'layouts/footer'

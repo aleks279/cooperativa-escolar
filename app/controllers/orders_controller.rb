@@ -4,16 +4,6 @@ class OrdersController < ApplicationController
 
   def index
     @orders = Order.all
-
-    respond_to do |format|
-      format.html
-      format.pdf do
-        render template: 'orders/index.html',
-        :pdf => "Reportes", # pdf will download as my_pdf.pdf
-        #:layout => 'pdf', # uses views/layouts/pdf.haml
-        :show_as_html => params[:debug].present? # renders html version if you set debug=true in URL
-      end
-    end
   end
 
   def show; end
@@ -55,18 +45,6 @@ class OrdersController < ApplicationController
       @order.destroy
     end
     redirect_to orders_path
-  end
-
-  def report
-    #respond_to do |format|
-    #  format.html
-    #  format.pdf do
-    #    render template: 'orders/reports/pdf',
-    #    :pdf => "Reportes", # pdf will download as my_pdf.pdf
-        #:layout => 'pdf', # uses views/layouts/pdf.haml
-    #    :show_as_html => params[:debug].present? # renders html version if you set debug=true in URL
-    #  end
-    #end
   end
 
   private
