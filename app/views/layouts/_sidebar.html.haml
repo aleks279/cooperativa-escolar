@@ -1,10 +1,10 @@
 / Sidebar
 %ul.sidebar.navbar-nav
-  %li.nav-item{class: "#{active_link?("users")}"}
+  %li.nav-item{class: "#{active_link?("orders")}"}
     = link_to orders_path, class: 'nav-link' do
       %i.fas.fa-fw.fa-tachometer-alt
       %span Ordenes
-  %li.nav-item{class: "#{active_link?("users")}"}
+  %li.nav-item{class: "#{active_link?("products")}"}
     = link_to products_path, class: 'nav-link' do
       %i.fas.fa-fw.fa-tachometer-alt
       %span Productos
@@ -12,3 +12,8 @@
     = link_to admin_users_path, class: 'nav-link' do
       %i.fas.fa-fw.fa-tachometer-alt
       %span Usuarios
+  - if can? :read, current_user
+    %li.nav-item{class: "#{active_link?("registries")}"}
+      = link_to admin_registries_path, class: 'nav-link' do
+        %i.fas.fa-fw.fa-tachometer-alt
+        %span Registros de ingreso
