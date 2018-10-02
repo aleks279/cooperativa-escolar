@@ -1,0 +1,29 @@
+.card.card-login.mx-auto.mt-5
+  .card-header Cooperativa Escolar
+  .card-body
+    - if @registry.errors.any?
+      %ul
+        - @registry.errors.full_messages.each do |msg|
+          %li= msg
+    = form_for @registry do |registry_form|
+      .form-group
+        .form-row
+          .col-md-6
+            .form-label-group
+              = text_field_tag :id_number, nil, class: 'form-control', required: true
+              = label_tag :id_number, 'Cédula'
+          .col-md-6
+            = registry_form.collection_radio_buttons :registry_type, @types.map { |k| [k, k] }, :first, :last, include_hidden: false do |b|
+              .form-label-group
+                = b.radio_button
+                = b.label(class: 'ml-3')
+                
+      .form-group
+        .form-row
+          .col-md-6
+            .form-label-group
+              = registry_form.text_area :notes, class: 'form-control', placeholder: 'Notas'
+      .form-group
+        .form-row.justify-content-between
+          .col-md-3
+            = registry_form.submit 'Guardar', class: 'btn btn-primary btn-block'
