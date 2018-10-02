@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
     @title = :new
     @article = Article.new(article_params)
 
-    @article.publisher = current_user
+    @article.user = current_user
 
     if @article.save
       redirect_to articles_path
@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(
-      :title, :published, :publisher,
+      :title, :published, :user,
       sections_attributes: %i[
         id header body image_url _destroy
       ]

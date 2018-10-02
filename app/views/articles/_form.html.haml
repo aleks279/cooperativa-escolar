@@ -1,0 +1,30 @@
+.card.mb-3
+  .card-body
+    - if @article.errors.any?
+      %ul
+        - @article.errors.full_messages.each do |msg|
+          %li= msg
+
+    = form_for @article do |article_form|
+      = article_form.fields_for :sections do |section_form|
+        = render 'section_fields', f: section_form
+
+      .form-group
+        .form-row
+          .col-md-6
+            .form-label-group
+              = article_form.text_field :title, placeholder: 'Titulo', class: 'form-control', required: true
+              = article_form.label :title, 'Titulo'
+      .form-group
+        .form-row.justify-content-between
+          = link_to_add_association 'Agregar seccion', article_form, :sections, class: 'btn btn-secondary'
+      .form-group.row
+        .form-check
+          = article_form.check_box :published
+          = article_form.label :published, 'Noticia publicada'
+      .form-group
+        .form-row.justify-content-between
+          .col-md-3
+            = article_form.submit 'Guardar', class: 'btn btn-primary btn-block'
+          .col-md-3
+            = link_to 'Cancelar', articles_path, class: 'btn btn-secondary btn-block'

@@ -30,6 +30,24 @@
                   %th
                   %th
                   %th
+              %tbody
+                - @articles.each do |article|
+                  %tr
+                    %td.align-middle=article.id
+                    %td.align-middle=article.title
+                    %td.align-middle=article.user.try(:first_name)
+                    %td.align-middle=article.created_at.strftime("%m/%d/%Y")
+                    %td.align-middle=article.published
+                    %td.align-middle
+                      - if can? :read, article
+                        = link_to 'Ver secciones', article_path(article), class: 'btn btn-primary btn-block'
+                    %td.align-middle
+                      - if can? :update, article
+                        = link_to 'Editar', edit_article_path(article), class: 'btn btn-primary btn-block'
+                    %td.align-middle
+                      - if can? :delete, article
+                        = link_to 'Eliminar', article_path(article), method: :delete, data: { confirm: 'Seguro que desea eliminar esta noticia permanentemente?' }, class: 'btn btn-danger btn-block'
+
 
 
 = render 'layouts/footer'
