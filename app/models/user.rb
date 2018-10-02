@@ -12,4 +12,8 @@ class User < ApplicationRecord
   has_many :articles
   has_many :registries
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
 end
