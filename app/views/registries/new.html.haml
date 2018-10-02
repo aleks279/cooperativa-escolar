@@ -1,5 +1,6 @@
-.card.card-login.mx-auto.mt-5
+.card.card-registry.mx-auto.mt-5
   .card-header Cooperativa Escolar
+  .clock{:style => "margin:2em;"}
   .card-body
     - if @registry.errors.any?
       %ul
@@ -20,10 +21,20 @@
                 
       .form-group
         .form-row
-          .col-md-6
+          .col
             .form-label-group
               = registry_form.text_area :notes, class: 'form-control', placeholder: 'Notas'
       .form-group
         .form-row.justify-content-between
           .col-md-3
             = registry_form.submit 'Guardar', class: 'btn btn-primary btn-block'
+
+:javascript
+  var clock;
+  
+  $(document).ready(function() {
+  	clock = $('.clock').FlipClock({
+  		clockFace: 'TwelveHourClock'
+  	});
+  });
+  
