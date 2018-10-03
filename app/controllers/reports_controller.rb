@@ -8,19 +8,11 @@ class ReportsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render template: 'reports/index.html',
-        :pdf => "Reportes", # pdf will download as my_pdf.pdf
-        #:layout => 'index.html', # uses views/layouts/pdf.haml
+        render template: 'reports/_pdf.html',
+        :pdf => "Reportes", # pdf will download as Reportes.pdf
         :show_as_html => params[:debug].present? # renders html version if you set debug=true in URL
       end
     end
-    #respond_to do |format|
-    #  format.html
-    #  format.pdf do
-    #    send_data ReportDrawer.draw(@orders), :filename => 'reporte.pdf', :type => 'application/pdf', :disposition => 'inline' 
-    #  end
-    #end
-
   end
 
   def show; end
