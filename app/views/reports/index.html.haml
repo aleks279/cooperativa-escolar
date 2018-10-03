@@ -13,7 +13,10 @@
             .col-3.align-self-center
               %i.fas.fa-table
               Reporte del Mes
+            .col-3
+              = link_to 'PDF', reports_path(format: :pdf), class: 'btn btn-primary btn-block float-right'
         .card-body
+
           
 
 

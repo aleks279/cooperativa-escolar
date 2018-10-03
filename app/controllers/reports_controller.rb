@@ -5,21 +5,21 @@ class ReportsController < ApplicationController
   def index
     @orders = Order.all
 
-    #respond_to do |format|
-    #  format.html
-    #  format.pdf do
-    #    render template: 'orders/index.html',
-    #    :pdf => "Reportes", # pdf will download as my_pdf.pdf
-        #:layout => 'pdf', # uses views/layouts/pdf.haml
-    #    :show_as_html => params[:debug].present? # renders html version if you set debug=true in URL
-    #  end
-    #end
     respond_to do |format|
       format.html
       format.pdf do
-        send_data ReportDrawer.draw(@orders), :filename => 'reporte.pdf', :type => 'application/pdf', :disposition => 'inline' 
+        render template: 'reports/index.html',
+        :pdf => "Reportes", # pdf will download as my_pdf.pdf
+        #:layout => 'index.html', # uses views/layouts/pdf.haml
+        :show_as_html => params[:debug].present? # renders html version if you set debug=true in URL
       end
     end
+    #respond_to do |format|
+    #  format.html
+    #  format.pdf do
+    #    send_data ReportDrawer.draw(@orders), :filename => 'reporte.pdf', :type => 'application/pdf', :disposition => 'inline' 
+    #  end
+    #end
 
   end
 
