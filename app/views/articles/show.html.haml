@@ -38,6 +38,16 @@
           .row
           .row
             .col-md-6
+              Estado de publicacion:
+              %br
+                - if @article.published
+                  ='Publicado'
+                - else
+                  = 'No publicado'
+
+          .row
+          .row
+            .col-md-6
               %br/
               Secciones de la noticia:
           .row
