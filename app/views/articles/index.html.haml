@@ -37,7 +37,11 @@
                     %td.align-middle=article.title
                     %td.align-middle=article.user.try(:first_name)
                     %td.align-middle=article.created_at.strftime("%m/%d/%Y")
-                    %td.align-middle=article.published
+                    %td.align-middle
+                      - if article.published
+                        ='Publicado'
+                      - else
+                        = 'No publicado'
                     %td.align-middle
                       - if can? :read, article
                         = link_to 'Ver secciones', article_path(article), class: 'btn btn-primary btn-block'

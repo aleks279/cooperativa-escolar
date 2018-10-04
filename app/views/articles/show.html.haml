@@ -1,0 +1,59 @@
+= render 'layouts/header'
+#wrapper
+  = render 'layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Noticias', articles_path
+        %li.breadcrumb-item.active #{@article.id}
+      .card.mb-3
+        .card-header
+          .row.justify-content-between
+            .col-3.align-self-center
+              %i.fas.fa-order-circle
+              Noticia ##{@article.id}
+            - if can? :update, @article
+              .col-3
+                = link_to 'Editar', edit_article_path(@article), class: 'btn btn-primary btn-block float-right'
+        .card-body
+          .row
+            .col-md-6
+              Titulo:
+              %br
+              #{@article.title}
+          .row
+          .row
+            .col-md-6
+              Fecha:
+              %br
+              #{@article.created_at.strftime("%m/%d/%Y")}
+          .row
+          .row
+            .col-md-6
+              Autor:
+              %br
+              #{@article.user.try(:first_name)}
+          .row
+          .row
+            .col-md-6
+              %br/
+              Secciones de la noticia:
+          .row
+          .table-responsive
+            %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
+              %thead
+                %tr
+                  %th Subtitulo
+                  %th Contenido
+                  %th Link URL imagen
+
+              %tbody
+                - @article.sections.each do |section|
+                  %tr
+                    %td.align-middle=section.try(:header)
+                    %td.align-middle=section.try(:body)
+                    %td.align-middle=section.try(:image_url)
+
+= render 'layouts/footer'
