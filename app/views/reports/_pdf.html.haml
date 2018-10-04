@@ -13,3 +13,7 @@
   %strong
     Total de Ordenes por mes:
   #{@ordenes_por_mes}
+%p
+  %strong
+    Ganancia Total:
+  ="₡ #{number_with_precision(@ganancia_total, precision: 0)}"

@@ -15,7 +15,9 @@ class ReportsController < ApplicationController
     end  
 
     @ordenes_por_mes = Order.where("EXTRACT( month from created_at::date)::integer = '?' and EXTRACT( year from created_at::date)::integer = '?'", DateTime.now.month,DateTime.now.year).count
-    
+
+    @ganancia_total = Order.where("EXTRACT( month from created_at::date)::integer = '?' and EXTRACT( year from created_at::date)::integer = '?'", DateTime.now.month,DateTime.now.year).sum(:total)
+
     respond_to do |format|
       format.html
       format.pdf do
