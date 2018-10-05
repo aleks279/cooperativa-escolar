@@ -1,3 +1,4 @@
+%meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
 = wicked_pdf_stylesheet_link_tag "pdf"
 %body.bodyReporte
 %br
@@ -8,11 +9,28 @@
 %br
 
 %h2 Reporte mensual de  #{@monthText}, #{@year}
-%p Vendedor: #{@vendedor.try(:first_name)} #{@vendedor.try(:last_name)}
+%p
+  %strong
+    Vendedor: 
+  #{@vendedor.try(:first_name)} #{@vendedor.try(:last_name)}
+%ul
+  %li.liReporte
+    %strong
+      Órdenes por mes:
+    #{@ordenes_por_mes}
+  %li.liReporte
+    %strong
+      Ganancia total:
+    ="₡ #{number_with_precision(@ganancia_total, precision: 0)}"
+  %li.liReporte
+    %strong
+      Ganancia por miembro:
+    ="₡ #{number_with_precision(@ganancia_por_miembro, precision: 0)}"    
 
 %br
 
-%h3 Productos Mas Vendidos
+
+%h3 Productos más vendidos
 .table-responsive
   %table#dataTable.table.tableReporte{:cellspacing => "0", :width => "100%"}
     %thead
@@ -27,16 +45,3 @@
 
 %br
 
-%ul
-  %li.liReporte
-    %strong
-      Total de Ordenes por mes:
-    #{@ordenes_por_mes}
-  %li.liReporte
-    %strong
-      Ganancia Total:
-    ="₡ #{number_with_precision(@ganancia_total, precision: 0)}"
-  %li.liReporte
-    %strong
-      Ganancia Por Miembro:
-    ="₡ #{number_with_precision(@ganancia_por_miembro, precision: 0)}"
