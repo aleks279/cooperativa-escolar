@@ -1,8 +1,6 @@
 class ReportsController < ApplicationController
 
   def index
-    #@orders_per_month = OrderItem.where("EXTRACT( month from created_at::date)::integer = '?' and EXTRACT( year from created_at::date)::integer = '?'", DateTime.now.month,DateTime.now.year)
-
     @cantidad_productos = OrderItem.where("EXTRACT( month from created_at::date)::integer = '?' and EXTRACT( year from created_at::date)::integer = '?'", DateTime.now.month,DateTime.now.year).group(:product_id).count
     @cantidad_productos_aux = @cantidad_productos.sort_by{|k,v| v}.reverse
 
