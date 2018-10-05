@@ -8,32 +8,8 @@ class ReportsController < ApplicationController
 
     @vendedor = current_user
 
-    @monthText =  if @month == 1
-                    @monthText ='enero'
-                  elsif @month == 2
-                    @monthText = 'febrero'
-                  elsif @month == 3
-                    @monthText = 'marzo'
-                  elsif @month == 4
-                    @monthText = 'abril'
-                  elsif @month == 5
-                    @monthText = 'mayo'
-                  elsif @month == 6
-                    @monthText = 'junio'
-                  elsif @month == 7
-                    @monthText = 'julio'
-                  elsif @month == 8
-                    @monthText = 'agosto'
-                  elsif @month == 9
-                    @monthText = 'septiembre'
-                  elsif @month == 10
-                    @monthText = 'octubre'
-                  elsif @month == 11
-                    @monthText = 'noviembre'
-                  else
-                    @monthText = 'diciembre'
-                  end
-
+    @meses = {1=>'enero',2=>'febrero',3=>'marzo',4=>'abril',5=>'mayo',6=>'junio',7=>'julio',8=>'agosto',9=>'septiembre',10=>'octubre',11=>'noviembre',12=>'diciembre'}
+    @monthText =  @meses[@month]
     @cantidad_productos = OrderItem.where("EXTRACT( month from created_at::date)::integer = '?' and EXTRACT( year from created_at::date)::integer = '?'", @month, @year).group(:product_id).count
     @cantidad_productos_aux = @cantidad_productos.sort_by { |_k, v| v }.reverse
 

@@ -9,7 +9,6 @@
 
 %h2 Reporte mensual de  #{@monthText}, #{@year}
 %p Vendedor: #{@vendedor.try(:first_name)} #{@vendedor.try(:last_name)}
-%p Fecha: #{@day}/#{@month}/#{@year}
 
 %br
 
@@ -40,4 +39,4 @@
   %li.liReporte
     %strong
       Ganancia Por Miembro:
-      ="₡ #{number_with_precision(@ganancia_por_miembro, precision: 0)}"
+    ="₡ #{number_with_precision(@ganancia_por_miembro, precision: 0)}"
