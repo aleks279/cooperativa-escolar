@@ -1,28 +1,28 @@
 
-body {
+.bodyReporte {
     margin-top: 350px;
     margin-bottom: 100px;
     margin-right: 90px;
     margin-left: 90px;
 }
 
-table {
+.tableReporte {
     border-collapse: collapse;
     width: 100%;
 }
 
-th, td {
+.thReporte, .tdReporte {
     text-align: left;
     padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+.trReporte:nth-child(even){background-color: #f2f2f2}
 
-th {
+.thReporte {
     background-color: grey;
     color: white;
 }
 
-li{
+.liReporte{
   margin: 25px 0;
 }

@@ -1,4 +1,5 @@
 = wicked_pdf_stylesheet_link_tag "pdf"
+%body.bodyReporte
 %br
 %br
 %h1 Escuela Calle Liles
@@ -14,29 +15,29 @@
 
 %h3 Productos Mas Vendidos
 .table-responsive
-  %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
+  %table#dataTable.table.tableReporte{:cellspacing => "0", :width => "100%"}
     %thead
-      %tr
-        %th Producto
-        %th Vendidos
+      %tr.trReporte
+        %th.thReporte Producto
+        %th.thReporte Vendidos
     %tbody
       - @masvendidos.each do |producto,cantidad|
-        %tr
-          %td.align-middle=producto
-          %td.align-middle=cantidad
+        %tr.trReporte
+          %td.tdReporte.align-middle=producto
+          %td.tdReporte.align-middle=cantidad
 
 %br
 
 %ul
-  %li
+  %li.liReporte
     %strong
       Total de Ordenes por mes:
     #{@ordenes_por_mes}
-  %li
+  %li.liReporte
     %strong
       Ganancia Total:
     ="₡ #{number_with_precision(@ganancia_total, precision: 0)}"
-  %li
+  %li.liReporte
     %strong
       Ganancia Por Miembro:
       ="₡ #{number_with_precision(@ganancia_por_miembro, precision: 0)}"
