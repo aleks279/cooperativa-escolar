@@ -67,7 +67,7 @@ describe 'Product requests', type: :request do
 
   describe 'GET /products/:product_id/edit' do
     let(:product) { create(:product) }
-  
+
     it 'renders the edit product template' do
       get edit_product_path(product)
       expect(response).to be_successful
@@ -87,8 +87,8 @@ describe 'Product requests', type: :request do
         {
           product: {
             name: 'new name',
-            description: 'new description'
-          }
+            description: 'new description',
+          },
         }
       }
 
@@ -108,8 +108,8 @@ describe 'Product requests', type: :request do
         {
           product: {
             name: '',
-            description: ''
-          }
+            description: '',
+          },
         }
       }
 

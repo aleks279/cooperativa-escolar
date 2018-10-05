@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     @order.seller = current_user
 
     if @order.save
-        redirect_to orders_path
+      redirect_to orders_path
     else
       render 'new'
     end
@@ -41,9 +41,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    if @order.present?
-      @order.destroy
-    end
+    @order.destroy if @order.present?
     redirect_to orders_path
   end
 
@@ -60,11 +58,11 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(
       :number, :date, :notes, :seller, :customer,
-      order_items_attributes: [
-        :id, :amount, :order, :product_id, :_destroy
+      order_items_attributes: %i[
+        id amount order product_id _destroy
       ],
-      customer_attributes: [
-        :first_name, :last_name, :email,
+      customer_attributes: %i[
+        first_name last_name email
       ]
     )
   end

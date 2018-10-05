@@ -27,6 +27,7 @@ tmp/
 
 /config/database.yml
 erd.pdf
+.rake_tasks~
 /coverage/*
 
 .env
