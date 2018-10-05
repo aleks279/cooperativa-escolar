@@ -43,7 +43,7 @@ describe 'Order requests', type: :request do
       it 'creates the new order' do
         post orders_path, params: {
           order: attributes_for(:order,
-            order_items_attributes: [attributes_for(:order_item)])
+                                order_items_attributes: [attributes_for(:order_item)]),
         }
         expect(response).to be_successful
       end
@@ -64,10 +64,10 @@ describe 'Order requests', type: :request do
               {
                 id: first_item.id,
                 amount: 6,
-                product_id: first_item.product.id
-              }
-            ]
-          }
+                product_id: first_item.product.id,
+              },
+            ],
+          },
         }
       }
 
