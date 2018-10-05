@@ -2,9 +2,37 @@ class ReportsController < ApplicationController
 
   def index
     # @orders_per_month = OrderItem.where("EXTRACT( month from created_at::date)::integer = '?' and EXTRACT( year from created_at::date)::integer = '?'", DateTime.now.month,DateTime.now.year)
-
+    @day = DateTime.now.day
     @month = DateTime.now.month
     @year = DateTime.now.year
+
+    @vendedor = current_user
+
+    @monthText =  if @month == 1
+                    @monthText ='enero'
+                  elsif @month == 2
+                    @monthText = 'febrero'
+                  elsif @month == 3
+                    @monthText = 'marzo'
+                  elsif @month == 4
+                    @monthText = 'abril'
+                  elsif @month == 5
+                    @monthText = 'mayo'
+                  elsif @month == 6
+                    @monthText = 'junio'
+                  elsif @month == 7
+                    @monthText = 'julio'
+                  elsif @month == 8
+                    @monthText = 'agosto'
+                  elsif @month == 9
+                    @monthText = 'septiembre'
+                  elsif @month == 10
+                    @monthText = 'octubre'
+                  elsif @month == 11
+                    @monthText = 'noviembre'
+                  else
+                    @monthText = 'diciembre'
+                  end
 
     @cantidad_productos = OrderItem.where("EXTRACT( month from created_at::date)::integer = '?' and EXTRACT( year from created_at::date)::integer = '?'", @month, @year).group(:product_id).count
     @cantidad_productos_aux = @cantidad_productos.sort_by { |_k, v| v }.reverse
