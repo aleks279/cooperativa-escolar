@@ -13,8 +13,25 @@
             .col-3.align-self-center
               %i.fas.fa-table
               Reporte del Mes
-            .col-3
+            .col-3.align-self-center
+              %input#getData.datepicker{:type => "text",:value => "#{@month}/#{@year}"}/
+            .col-3.align-self-center
+              = link_to 'Actualizar Reporte', reports_path,class: 'btn btn-primary btn-block float-right'
+            .col-3.align-self-center
               = link_to 'Generar PDF', reports_path(format: :pdf), target: :_blank, class: 'btn btn-primary btn-block float-right'
         .card-body
           = render 'pdf'
 = render 'layouts/footer'
+
+:javascript
+    $(document).ready(function(){
+      $('.datepicker').datepicker({
+        format: "mm/yyyy",
+        startView: 1,
+        minViewMode: 1,
+        maxViewMode: 2
+      });
+    });
+    }
+
+    

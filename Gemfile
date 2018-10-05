@@ -50,7 +50,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-
+gem 'bootstrap-datepicker-rails'
 gem 'flipclockjs-rails'
 
 # For searches
