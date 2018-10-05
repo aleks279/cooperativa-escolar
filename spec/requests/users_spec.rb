@@ -84,7 +84,7 @@ describe 'User requests', type: :request do
           user: {
             first_name: 'New name',
             last_name: 'New last name',
-          }
+          },
         }
       }
 
@@ -105,7 +105,7 @@ describe 'User requests', type: :request do
           user: {
             first_name: '',
             last_name: '',
-          }
+          },
         }
       }
 
