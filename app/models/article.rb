@@ -1,5 +1,5 @@
 class Article < ApplicationRecord
-  validates :title, presence: true
+  validates :title, :published, presence: true
 
   belongs_to :user
   has_many :sections

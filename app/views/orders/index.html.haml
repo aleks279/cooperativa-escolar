@@ -17,6 +17,8 @@
             .col-3
               - if can? :create, current_user
                 = link_to 'Nueva Orden', new_order_path(@products), class: 'btn btn-primary btn-block float-right'
+            .col-3
+              = link_to 'Reporte Mensual', reports_path, class: 'btn btn-primary btn-block float-right'
         .card-body
           .table-responsive
             %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
@@ -29,6 +31,7 @@
                   %th
                   %th
                   %th
+               
 
               %tbody
                 - @orders.each do |order|

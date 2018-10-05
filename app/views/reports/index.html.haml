@@ -1,0 +1,32 @@
+= render 'layouts/header'
+#wrapper
+  = render 'layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Reportes', reports_path
+      .card.mb-3
+        .card-header
+          .row.justify-content-between
+            .col-3.align-self-center
+              %i.fas.fa-table
+              Reporte del Mes
+            .col-3.align-self-center
+              %input#datepicker{:type => "date",:value => "#{@month}/#{@year}"}/
+            .col-3.align-self-center
+              %button.btn.btn-primary.btn-block.float-right{:onclick => 'ActualizarFecha()'} Actualizar Reportes
+            .col-3.align-self-center
+              = link_to 'Generar PDF', reports_path(format: :pdf), target: :_blank, class: 'btn btn-primary btn-block float-right'
+        .card-body
+          = render 'pdf'
+= render 'layouts/footer'
+
+:javascript
+    $('#datepicker').datepicker({
+        format: "mm/yyyy",
+        startView: 1,
+        minViewMode: 1,
+        maxViewMode: 2
+    });

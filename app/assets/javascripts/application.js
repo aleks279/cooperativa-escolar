@@ -27,3 +27,4 @@
 //= require cocoon
 //= require flipclock.min
 //= require_tree .
+//= require bootstrap-datepicker
