@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_order, except: %i[index new create report]
+  before_action :find_order, except: %i[index new create]
   before_action :set_products, only: %i[new create edit update]
 
   def index
