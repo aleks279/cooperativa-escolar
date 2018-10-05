@@ -18,6 +18,15 @@ class ReportsController < ApplicationController
 
     @ganancia_total = Order.where("EXTRACT( month from created_at::date)::integer = '?' and EXTRACT( year from created_at::date)::integer = '?'", DateTime.now.month,DateTime.now.year).sum(:total)
 
+    @cantidad_vendedores = Order.select(:seller_id).where("EXTRACT( month from created_at::date)::integer = '?' and EXTRACT( year from created_at::date)::integer = '?'", DateTime.now.month,DateTime.now.year).distinct.count
+
+    if @cantidad_vendedores == 0
+      @cantidad_vendedores = 1;
+    end
+
+    @date_inicio = 1
+    @ganancia_por_miembro = @ganancia_total / @cantidad_vendedores
+
     respond_to do |format|
       format.html
       format.pdf do
