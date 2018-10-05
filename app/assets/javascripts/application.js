@@ -25,4 +25,5 @@
 //= require activestorage
 //= require turbolinks
 //= require cocoon
+//= require flipclock.min
 //= require_tree .

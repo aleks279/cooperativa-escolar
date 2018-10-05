@@ -51,6 +51,8 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'flipclockjs-rails'
+
 # For searches
 gem 'ransack', git: 'https://github.com/activerecord-hackery/ransack'
 

@@ -22,7 +22,6 @@ class AddNewsSectionsRegistries < ActiveRecord::Migration[5.2]
     create_table :registries do |t|
       t.string :registry_type
       t.text :notes
-      t.time :time
 
       t.references :user
 
