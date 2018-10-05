@@ -1,5 +1,6 @@
 = wicked_pdf_stylesheet_link_tag "pdf"
-
+%br
+%br
 %h1 Escuela Calle Liles
 %hr
 
@@ -26,15 +27,16 @@
 
 %br
 
-%p
-  %strong
-    Total de Ordenes por mes:
-  #{@ordenes_por_mes}
-%p
-  %strong
-    Ganancia Total:
-  ="₡ #{number_with_precision(@ganancia_total, precision: 0)}"
-%p
-  %strong
-    Ganancia Por Miembro:
-  ="₡ #{number_with_precision(@ganancia_por_miembro, precision: 0)}"
+%ul
+  %li
+    %strong
+      Total de Ordenes por mes:
+    #{@ordenes_por_mes}
+  %li
+    %strong
+      Ganancia Total:
+    ="₡ #{number_with_precision(@ganancia_total, precision: 0)}"
+  %li
+    %strong
+      Ganancia Por Miembro:
+      ="₡ #{number_with_precision(@ganancia_por_miembro, precision: 0)}"
