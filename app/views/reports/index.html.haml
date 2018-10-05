@@ -6,7 +6,7 @@
       / Breadcrumbs
       %ol.breadcrumb
         %li.breadcrumb-item
-          = link_to 'Ordenes', orders_path
+          = link_to 'Reportes', reports_path
       .card.mb-3
         .card-header
           .row.justify-content-between
@@ -14,11 +14,7 @@
               %i.fas.fa-table
               Reporte del Mes
             .col-3
-              = link_to 'PDF', reports_path(format: :pdf), class: 'btn btn-primary btn-block float-right'
+              = link_to 'Generar PDF', reports_path(format: :pdf), target: :_blank, class: 'btn btn-primary btn-block float-right'
         .card-body
           = render 'pdf'
-
-          
-
-
 = render 'layouts/footer'
