@@ -1,0 +1,23 @@
+.table-responsive
+  %table#dataTable.table.table-bordered{:cellspacing => "0", :width => "100%"}
+    %thead
+      %tr
+        %th Producto
+        %th Vendidos
+    %tbody
+      - @masvendidos.each do |producto,cantidad|
+        %tr
+          %td.align-middle=producto
+          %td.align-middle=cantidad
+%p
+  %strong
+    Total de Ordenes por mes:
+  #{@ordenes_por_mes}
+%p
+  %strong
+    Ganancia Total:
+  ="₡ #{number_with_precision(@ganancia_total, precision: 0)}"
+%p
+  %strong
+    Ganancia Por Miembro:
+  ="₡ #{number_with_precision(@ganancia_por_miembro, precision: 0)}"

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   resources :orders
   resources :products
+  resources :reports
+
   resources :registries, only: %i[new create]
 
   get "page/:page" => "page#show"
