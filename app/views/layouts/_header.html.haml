@@ -1,13 +1,18 @@
 %nav.navbar.navbar-expand.navbar-dark.bg-dark.static-top
-  = link_to 'Escuela Calle Liles', orders_path, class: 'navbar-brand mr-1'
+  - if current_user
+    = link_to 'Escuela Calle Liles', orders_path, class: 'navbar-brand mr-1'
+  - else
+    = link_to 'Escuela Calle Liles', root_path, class: 'navbar-brand mr-1'
   / Navbar Search
   %dic.d-none.d-md-inline-block.form-inline.ml-auto.mr-0.mr-md-3.my-2.my-md-0
   / Navbar
   %ul.navbar-nav.ml-auto.ml-md-0
-    %li.nav-item.dropdown.no-arrow
-      %a#userDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-        %i.fas.fa-bell.fa-fw
-      .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "userDropdown"}
+    - if !current_user
+      %li.nav-item.dropdown.no-arrow
+        %a#userDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+          %i.fas.fa-bell.fa-fw
+        .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "userDropdown"}
+          = link_to 'Control de acceso', new_registry_path, class: 'dropdown-item'
     %li.nav-item.dropdown.no-arrow
       %a#userDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
         %i.fas.fa-user-circle.fa-fw
