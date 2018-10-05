@@ -1,8 +1,13 @@
 class ArticlesController < ApplicationController
-  before_action :find_article, except: %i[index new create]
+  skip_before_action :authenticate_user!, only: %i[wall]
+  before_action :find_article, except: %i[index new create wall]
 
   def index
     @articles = Article.all
+  end
+
+  def wall
+    @articles = Article.where(published: true)
   end
 
   def show; end

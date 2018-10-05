@@ -1,0 +1,15 @@
+= render 'layouts/header'
+.card.card-wall.mx-auto.mt-5
+  .card-header Cooperativa Escolar
+  .card-body
+    - @articles.each do |article|
+      .row
+        .col
+          %h1=article.title
+          - article.sections.each do |section|
+            %h3=section.header
+            - if section.image_url.present?
+              .text-center
+                = image_tag section.image_url, class: 'rounded mx-auto d-block'
+            %p.text-justify
+              = section.body

@@ -11,13 +11,12 @@
 
       .form-group
         .form-row
-          .col-md-6
+          .col-md-12
             .form-label-group
               = article_form.text_field :title, placeholder: 'Titulo', class: 'form-control', required: true
               = article_form.label :title, 'Titulo'
       .form-group
-        .form-row.justify-content-between
-          = link_to_add_association 'Agregar seccion', article_form, :sections, class: 'btn btn-secondary'
+        = link_to_add_association 'Agregar seccion', article_form, :sections, class: 'btn btn-secondary'
       .form-group.row
         .form-check
           = article_form.check_box :published
