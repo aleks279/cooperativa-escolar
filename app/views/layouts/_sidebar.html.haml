@@ -21,3 +21,7 @@
     = link_to reports_path, class: 'nav-link' do
       %i.fas.fa-fw.fa-tachometer-alt
       %span Reportes
+  %li.nav-item{class: "#{active_link?("articles")}"}
+    = link_to articles_path, class: 'nav-link' do
+      %i.fas.fa-fw.fa-tachometer-alt
+      %span Noticias
