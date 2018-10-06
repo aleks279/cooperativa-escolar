@@ -23,8 +23,8 @@ class ReportsController < ApplicationController
   private
 
   def search_params
-    return unless params[:date]
-    @month, @year = params[:date].split('/')
+    date = params[:date] || Time.zone.now.strftime("%m/%Y")
+    @month, @year = date.split('/')
     Order.by_year(@year).by_month(@month)
   end
 end
