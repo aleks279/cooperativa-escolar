@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'articles#wall'
   namespace :admin do
     get 'users/index'
   end
@@ -7,7 +8,6 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    root to: 'users/sessions#new'
     get 'signin' => 'users/sessions#new'
   end
 
@@ -18,10 +18,11 @@ Rails.application.routes.draw do
 
   resources :orders
   resources :products
-  resources :reports
+  resources :reports, only: %i[index]
 
   resources :registries, only: %i[new create]
 
+  resources :articles
+  get 'wall' => 'articles#wall'
   get "page/:page" => "page#show"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
