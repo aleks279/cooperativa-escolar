@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
 
   def index
-    @orders = search_params
+    @orders = search_params || []
 
     # @products = Product.select("products.*, SUM(order_items.amount) as total_qty, order_items.product_id")
     #                    .joins(:order_items).joins("INNER JOIN orders ON orders.id = order_items.order_id")
