@@ -1,47 +1,34 @@
 %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
 = wicked_pdf_stylesheet_link_tag "pdf"
 %body.bodyReporte
-%br
-%br
-%h1 Escuela Calle Liles
-%hr
+  %h1 Escuela Calle Liles
+  %hr
 
-%br
+  %h2 Reporte mensual del #{@month}/#{@year}
+  %ul
+    %li.liReporte
+      %strong
+        Generado por: 
+      #{current_user.full_name}
+    %li.liReporte
+      %strong
+        Ganancia total:
+      ="₡ #{number_with_precision(@ganancia_total, precision: 0)}"   
+  %br
 
-%h2 Reporte mensual de  #{@monthText}, #{@year}
-%p
-  %strong
-    Vendedor: 
-  #{@vendedor.try(:first_name)} #{@vendedor.try(:last_name)}
-%ul
-  %li.liReporte
-    %strong
-      Órdenes por mes:
-    #{@ordenes_por_mes}
-  %li.liReporte
-    %strong
-      Ganancia total:
-    ="₡ #{number_with_precision(@ganancia_total, precision: 0)}"
-  %li.liReporte
-    %strong
-      Ganancia por miembro:
-    ="₡ #{number_with_precision(@ganancia_por_miembro, precision: 0)}"    
-
-%br
-
-
-%h3 Productos más vendidos
-.table-responsive
-  %table#dataTable.table.tableReporte{:cellspacing => "0", :width => "100%"}
-    %thead
-      %tr.trReporte
-        %th.thReporte Producto
-        %th.thReporte Vendidos
-    %tbody
-      - @masvendidos.each do |producto,cantidad|
+  %h3 Órdenes del mes
+  .table-responsice
+    %table#dataTable.table.tableReporte{cellspacing: '0', width: '100%'}
+      %thead
         %tr.trReporte
-          %td.tdReporte.align-middle=producto
-          %td.tdReporte.align-middle=cantidad
-
-%br
-
+          %th.thReporte Número
+          %th.thReporte Fecha
+          %th.thReporte Total
+          %th.thReporte Vendedor
+      %tbody
+        - @orders.each do |order|
+          %tr.trReporte
+            %td.tdReporte.align-middle="#{order.number}"
+            %td.tdReporte.align-middle=l order.created_at, format: :short
+            %td.tdReporte.align-middle="₡ #{order.total}"
+            %td.tdReporte.align-middle=order.seller.full_name

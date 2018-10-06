@@ -8,6 +8,13 @@ GIT
       activesupport (>= 5.0)
       i18n
 
+GIT
+  remote: https://github.com/radar/by_star
+  revision: 422c06ec1ea8ce633aca014a4403fbac92630057
+  specs:
+    by_star (3.0.0)
+      activesupport (> 3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -609,6 +616,7 @@ DEPENDENCIES
   bootstrap-sass
   bootstrap_sb_admin_base_v1
   bullet
+  by_star!
   byebug
   cancancan
   capybara

@@ -13,20 +13,21 @@
             .col-3.align-self-center
               %i.fas.fa-table
               Reporte del Mes
-            .col-3.align-self-center
-              %input#datepicker{:type => "date",:value => "#{@month}/#{@year}"}/
-            .col-3.align-self-center
-              %button.btn.btn-primary.btn-block.float-right{:onclick => 'ActualizarFecha()'} Actualizar Reportes
-            .col-3.align-self-center
-              = link_to 'Generar PDF', reports_path(format: :pdf), target: :_blank, class: 'btn btn-primary btn-block float-right'
+            = form_tag reports_path, method: :get, class: 'col-6 align-self-center' do
+              .row.justify-content-end
+                .col-3.align-self-center
+                  = text_field_tag :date, params[:date], id: 'datepicker', placeholder: 'mes/año', class: 'form-control'
+                .col-3.align-self-center
+                  = submit_tag 'Cambiar fecha', name: nil, class: 'btn btn-primary btn-block float-right'
+                .col-3.align-self-center
+                  = link_to 'Generar PDF', reports_path(format: :pdf, date: params[:date]), target: :_blank, class: 'btn btn-primary btn-block float-right'
         .card-body
           = render 'pdf'
 = render 'layouts/footer'
 
 :javascript
-    $('#datepicker').datepicker({
-        format: "mm/yyyy",
-        startView: 1,
-        minViewMode: 1,
-        maxViewMode: 2
-    });
+  $('#datepicker').datepicker({
+    autoclose: true,
+    minViewMode: 1,
+    format: 'mm/yyyy'
+  });
