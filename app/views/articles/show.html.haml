@@ -1,0 +1,47 @@
+= render 'layouts/header'
+#wrapper
+  = render 'layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Noticias', articles_path
+        %li.breadcrumb-item.active #{@article.title}
+      .card.mb-3
+        .card-header
+          .row.justify-content-between
+            .col-3.align-self-center
+              %i.fas.fa-order-circle
+              #{@article.title}
+            - if can? :update, @article
+              .col-3
+                = link_to 'Editar', edit_article_path(@article), class: 'btn btn-primary btn-block float-right'
+        .card-body
+          .row
+            .col-md-4
+              Autor:
+              %br
+              #{@article.user.try(:full_name)}
+            .col-md-4
+              Fecha:
+              %br
+              #{@article.created_at.strftime("%m/%d/%Y")}
+            .col-md-4
+              Estado de publicacion:
+              %br
+                - if @article.published
+                  ='Publicado'
+                - else
+                  = 'No publicado'
+          .row
+            .col
+              %h1=@article.title
+              - @article.sections.each do |section|
+                %h3=section.header
+                - if section.image_url.present?
+                  .text-center
+                    = image_tag section.image_url, class: 'rounded mx-auto d-block'
+                %p.text-justify
+                  = section.body
+= render 'layouts/footer'
