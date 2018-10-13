@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_09_29_183012) do
   create_table "registries", force: :cascade do |t|
     t.string "registry_type"
     t.text "notes"
+    t.time "time"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
