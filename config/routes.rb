@@ -23,4 +23,11 @@ Rails.application.routes.draw do
   resources :articles
   get 'wall' => 'articles#wall'
   get "page/:page" => "page#show"
+
+  namespace :api do
+    namespace :v1 do
+      resources :articles, only: %i[index]
+      resources :products, only: %i[index]
+    end
+  end
 end
