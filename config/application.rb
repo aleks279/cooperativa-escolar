@@ -24,6 +24,13 @@ module CooperativaEscolar
       g.stylesheets false
     end
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: %i[get post patch options]
+      end
+    end
+
     config.active_record.default_timezone = :local
     config.time_zone = 'America/Costa_Rica'
   end

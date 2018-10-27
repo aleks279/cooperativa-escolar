@@ -31,7 +31,7 @@ gem 'jquery_mask_rails'
 gem 'bootsnap', require: false
 gem 'popper_js', '~> 1.12.9'
 gem 'bootstrap-sass'
-gem 'font-awesome-rails'
+gem "font-awesome-rails", github: "bokmann/font-awesome-rails", branch: "master"
 
 # Utilities
 gem 'devise'
