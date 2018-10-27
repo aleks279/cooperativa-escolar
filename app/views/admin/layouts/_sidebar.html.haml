@@ -17,6 +17,10 @@
       = link_to admin_registries_path, class: 'nav-link' do
         %i.fas.fa-fw.fa-tachometer-alt
         %span Registros de ingreso
+  %li.nav-item{class: "#{active_link?("reports")}"}
+    = link_to reports_path, class: 'nav-link' do
+      %i.fas.fa-fw.fa-tachometer-alt
+      %span Reportes
   %li.nav-item{class: "#{active_link?("articles")}"}
     = link_to articles_path, class: 'nav-link' do
       %i.fas.fa-fw.fa-tachometer-alt

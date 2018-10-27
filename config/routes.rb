@@ -14,12 +14,14 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :registries, only: %i[index]
-    resources :articles
   end
 
   resources :orders
   resources :products
+  resources :reports, only: %i[index]
+
   resources :registries, only: %i[new create]
+
   resources :articles
   get 'wall' => 'articles#wall'
   get "page/:page" => "page#show"

@@ -1,10 +1,8 @@
-.form-row.nested-fields
+.form-row.mb-3.nested-fields
   .col-md-5
     .form-label-group
       = f.collection_select :product_id, @products, :id, :name_and_available_aty, { include_blank: 'Seleccione un producto' }, class: 'form-control', required: true
   .col-md-5
-    .form-label-group
-      = f.number_field :amount, class: 'form-control', required: true
-      = f.label 'Cantidad'
+    = f.number_field :amount, class: 'form-control', required: true, placeholder: 'Cantidad'
   .col-md-2
     = link_to_remove_association 'Quitar producto', f, class: 'btn btn-danger'

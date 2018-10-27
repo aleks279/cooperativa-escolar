@@ -1,0 +1,33 @@
+= render 'layouts/header'
+#wrapper
+  = render 'layouts/sidebar'
+  #content-wrapper
+    .container-fluid
+      / Breadcrumbs
+      %ol.breadcrumb
+        %li.breadcrumb-item
+          = link_to 'Reportes', reports_path
+      .card.mb-3
+        .card-header
+          .row.justify-content-between
+            .col-3.align-self-center
+              %i.fas.fa-table
+              Reporte del Mes
+            = form_tag reports_path, method: :get, class: 'col-6 align-self-center' do
+              .row.justify-content-end
+                .col-3.align-self-center
+                  = text_field_tag :date, params[:date], id: 'datepicker', placeholder: 'mes/año', class: 'form-control'
+                .col-3.align-self-center
+                  = submit_tag 'Cambiar fecha', name: nil, class: 'btn btn-primary btn-block float-right'
+                .col-3.align-self-center
+                  = link_to 'Generar PDF', reports_path(format: :pdf, date: params[:date]), target: :_blank, class: 'btn btn-primary btn-block float-right'
+        .card-body
+          = render 'pdf'
+= render 'layouts/footer'
+
+:javascript
+  $('#datepicker').datepicker({
+    autoclose: true,
+    minViewMode: 1,
+    format: 'mm/yyyy'
+  });

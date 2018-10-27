@@ -20,6 +20,7 @@ gem 'fog'
 gem 'material_icons'
 gem 'kaminari'
 gem 'bootstrap_sb_admin_base_v1'
+gem 'bootstrap-datepicker-rails'
 
 # Misc
 gem 'turbolinks'
@@ -48,10 +49,13 @@ gem 'friendly_id'
 gem 'wicked'
 gem 'rack-cors', require: 'rack/cors'
 gem 'active_model_serializers', '~> 0.10.0'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 gem 'flipclockjs-rails'
 
 # For searches
 gem 'ransack', git: 'https://github.com/activerecord-hackery/ransack'
+gem 'by_star', git: "https://github.com/radar/by_star"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
