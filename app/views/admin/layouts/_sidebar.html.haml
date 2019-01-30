@@ -12,11 +12,6 @@
     = link_to admin_users_path, class: 'nav-link' do
       %i.fas.fa-fw.fa-tachometer-alt
       %span Usuarios
-  - if can? :read, current_user
-    %li.nav-item{class: "#{active_link?("registries")}"}
-      = link_to admin_registries_path, class: 'nav-link' do
-        %i.fas.fa-fw.fa-tachometer-alt
-        %span Registros de ingreso
   %li.nav-item{class: "#{active_link?("reports")}"}
     = link_to reports_path, class: 'nav-link' do
       %i.fas.fa-fw.fa-tachometer-alt
