@@ -13,14 +13,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
-    resources :registries, only: %i[index]
   end
 
   resources :orders
   resources :products
   resources :reports, only: %i[index]
-
-  resources :registries, only: %i[new create]
 
   resources :articles
   get 'wall' => 'articles#wall'
