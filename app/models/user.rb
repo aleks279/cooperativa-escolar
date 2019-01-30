@@ -10,7 +10,6 @@ class User < ApplicationRecord
   validates :id_number, uniqueness: true
 
   has_many :articles
-  has_many :registries
 
   def full_name
     "#{first_name} #{last_name}"
